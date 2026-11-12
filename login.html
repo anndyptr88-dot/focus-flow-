@@ -1,131 +1,111 @@
 <!DOCTYPE html>
+<!-- Menandakan bahwa dokumen menggunakan HTML5. -->
+
 <html lang="id">
+<!-- Menentukan bahasa halaman sebagai bahasa Indonesia. -->
 
 <head>
+    <!-- Bagian informasi halaman. -->
 
-    <!-- Mengatur karakter agar mendukung berbagai jenis teks -->
     <meta charset="UTF-8">
+    <!-- Mendukung berbagai karakter dan simbol. -->
 
-    <!-- Membuat tampilan menyesuaikan ukuran layar perangkat -->
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
+    <!-- Menyesuaikan tampilan dengan ukuran layar perangkat. -->
 
-    <!-- Judul halaman yang muncul pada tab browser -->
     <title>Login - Focus Flow</title>
+    <!-- Judul yang muncul di tab browser. -->
 
-    <!-- Menghubungkan halaman Login dengan file CSS -->
     <link rel="stylesheet" href="- login-style.css">
-
+    <!-- Menghubungkan halaman Login dengan file CSS.
+         Nama file harus sama persis, termasuk tanda minus dan spasinya. -->
 </head>
 
 <body>
-
-    <!-- ==================================================
-         1. LOGIN CONTAINER
-         Tempat seluruh elemen halaman Login ditampilkan.
-         ================================================== -->
+    <!-- Bagian yang menampilkan isi halaman. -->
 
     <div class="login-container">
+        <!-- div menjadi wadah utama formulir Login.
+             class login-container dipakai CSS untuk mengatur
+             ukuran, posisi, warna, dan bentuk kartu Login. -->
 
-        <!-- Judul halaman Login -->
         <h1>Welcome Back!</h1>
+        <!-- h1 adalah judul utama halaman Login. -->
 
-        <!-- Keterangan singkat untuk pengguna -->
         <p>
+            <!-- p menampilkan keterangan di bawah judul. -->
             Login to continue your productivity journey.
         </p>
 
-
-        <!-- ==================================================
-             2. LOGIN FORM
-             Formulir untuk memasukkan email dan password.
-             ================================================== -->
-
         <form id="login-form">
+            <!-- form mengelompokkan kolom dan tombol Login.
+                 id login-form menjadi penanda yang dicari JavaScript
+                 untuk menjalankan proses Login ketika formulir dikirim. -->
 
-            <!-- Input untuk memasukkan email -->
             <div class="input-group">
+                <!-- Wadah untuk satu kelompok input, yaitu label dan kolom email. -->
 
-                <!-- Label yang menjelaskan kolom email -->
                 <label for="email">Email</label>
+                <!-- label adalah keterangan kolom.
+                     for="email" menghubungkan label dengan input
+                     yang memiliki id="email". -->
 
-                <!--
-                    type="email" membuat browser memeriksa
-                    format email yang dimasukkan.
-
-                    id="email" digunakan JavaScript untuk
-                    mengambil nilai email pengguna.
-                -->
                 <input
                     type="email"
                     id="email"
                     placeholder="Enter your email"
                     required
                 >
-
+                <!-- input membuat kolom untuk memasukkan data.
+                     type="email" menunjukkan bahwa isinya berupa email.
+                     id="email" menjadi penanda kolom untuk JavaScript.
+                     placeholder menampilkan contoh tulisan sebelum diisi.
+                     required membuat kolom wajib diisi. -->
             </div>
 
-
-            <!-- Input untuk memasukkan password -->
             <div class="input-group">
+                <!-- Wadah kelompok input password. -->
 
-                <!-- Label yang menjelaskan kolom password -->
                 <label for="password">Password</label>
+                <!-- Label yang terhubung dengan kolom password. -->
 
-                <!--
-                    type="password" menyamarkan karakter
-                    password yang sedang diketik.
-
-                    id="password" digunakan JavaScript
-                    untuk mengambil password pengguna.
-                -->
                 <input
                     type="password"
                     id="password"
                     placeholder="Enter your password"
                     required
                 >
-
+                <!-- type="password" menyamarkan karakter yang diketik.
+                     id="password" menjadi penanda kolom password.
+                     placeholder memberi petunjuk kepada pengguna.
+                     required berarti kolom wajib diisi. -->
             </div>
 
-
-            <!-- Tombol untuk mengirim formulir Login -->
             <button type="submit" class="login-submit">
+                <!-- button membuat tombol.
+                     type="submit" berarti tombol mengirim formulir.
+                     class login-submit digunakan CSS untuk mengatur desain tombol. -->
                 Login
             </button>
-
         </form>
 
-
-        <!-- ==================================================
-             3. TAUTAN REGISTER
-             Mengarahkan pengguna yang belum memiliki akun
-             ke halaman pendaftaran.
-             ================================================== -->
-
         <p class="register-text">
+            <!-- Paragraf untuk pengguna yang belum memiliki akun. -->
 
             Don't have an account?
 
             <a href="register.html">
+                <!-- a membuat tautan menuju halaman pendaftaran. -->
                 Register
             </a>
-
         </p>
-
     </div>
 
-
-    <!-- ==================================================
-         4. JAVASCRIPT
-         Menghubungkan halaman Login dengan script.js.
-
-         type="module" diperlukan karena script.js
-         menggunakan import Firebase.
-         ================================================== -->
-
     <script type="module" src="script.js"></script>
+    <!-- Menghubungkan halaman dengan script.js.
+         type="module" diperlukan karena file JavaScript
+         menggunakan sistem import untuk Firebase. -->
 
 </body>
-
 </html>

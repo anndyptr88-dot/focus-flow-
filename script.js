@@ -398,5 +398,3 @@ if (logoutButton) {
 // Catatan:
 // Pengaturan nama dan email pada Study Schedule
 // tetap ditangani oleh file study-schedule.js.
-
-

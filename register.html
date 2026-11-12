@@ -1,159 +1,112 @@
 <!DOCTYPE html>
+<!-- Menandakan bahwa dokumen menggunakan HTML5. -->
+
 <html lang="id">
+<!-- Menentukan bahasa halaman. -->
 
 <head>
+    <!-- Bagian informasi halaman. -->
 
-    <!-- Mengatur karakter agar tulisan dapat ditampilkan dengan benar -->
     <meta charset="UTF-8">
+    <!-- Mendukung berbagai karakter dan simbol. -->
 
-    <!-- Membuat tampilan menyesuaikan ukuran layar laptop dan ponsel -->
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
+    <!-- Menyesuaikan tampilan dengan ukuran layar perangkat. -->
 
-    <!-- Judul yang muncul pada tab browser -->
     <title>Register - Focus Flow</title>
+    <!-- Judul yang muncul pada tab browser. -->
 
-    <!-- Menghubungkan halaman Register dengan file CSS -->
     <link rel="stylesheet" href="- login-style.css">
-
+    <!-- Menggunakan CSS yang sama dengan halaman Login. -->
 </head>
 
 <body>
-
-    <!-- ==================================================
-         1. REGISTER CONTAINER
-         Tempat seluruh isi formulir pendaftaran akun.
-         ================================================== -->
+    <!-- Bagian isi yang ditampilkan kepada pengguna. -->
 
     <div class="login-container">
+        <!-- Wadah utama formulir pendaftaran.
+             Class ini sama dengan halaman Login supaya desainnya konsisten. -->
 
-        <!-- Judul halaman pendaftaran -->
         <h1>Create Account</h1>
+        <!-- Judul halaman pendaftaran. -->
 
-        <!-- Penjelasan singkat mengenai pendaftaran -->
         <p>
             Join Focus Flow and start your
             productivity journey.
         </p>
-
-
-        <!-- ==================================================
-             2. REGISTER FORM
-             Formulir untuk membuat akun baru.
-             ID register-form digunakan JavaScript
-             untuk mengetahui ketika formulir dikirim.
-             ================================================== -->
+        <!-- Keterangan singkat halaman. -->
 
         <form id="register-form">
-
-
-            <!-- ==================================================
-                 3. KOLOM NAMA LENGKAP
-                 ================================================== -->
+            <!-- Formulir pendaftaran.
+                 ID register-form digunakan JavaScript untuk menemukan
+                 formulir ini dan memproses data pendaftaran. -->
 
             <div class="input-group">
+                <!-- Wadah kolom nama. -->
 
-                <!-- Tulisan penjelas untuk kolom nama -->
                 <label for="name">Full Name</label>
+                <!-- Label yang terhubung dengan input ber-ID name. -->
 
-                <!--
-                    type="text" berarti pengguna dapat mengetik nama.
-
-                    id="name" adalah penanda kolom nama.
-                    JavaScript menggunakan ID ini untuk mengambil
-                    nama yang dimasukkan pengguna.
-
-                    required berarti kolom ini wajib diisi.
-                -->
                 <input
                     type="text"
                     id="name"
                     placeholder="Enter your full name"
                     required
                 >
-
+                <!-- type="text" menerima tulisan biasa.
+                     id="name" menjadi penanda input nama.
+                     placeholder memberi petunjuk sebelum kolom diisi.
+                     required membuat kolom wajib diisi. -->
             </div>
 
 
-            <!-- ==================================================
-                 4. KOLOM EMAIL
-                 ================================================== -->
-
             <div class="input-group">
+                <!-- Wadah kolom email. -->
 
-                <!-- Tulisan penjelas untuk kolom email -->
                 <label for="email">Email</label>
+                <!-- Label untuk kolom email. -->
 
-                <!--
-                    type="email" digunakan untuk memasukkan email.
-
-                    id="email" menjadi penanda kolom email.
-                    JavaScript mengambil alamat email dari sini.
-
-                    required berarti email wajib diisi.
-                -->
                 <input
                     type="email"
                     id="email"
                     placeholder="Enter your email"
                     required
                 >
-
+                <!-- type="email" digunakan untuk alamat email.
+                     id="email" menjadi penanda untuk JavaScript.
+                     placeholder memberi petunjuk pengisian.
+                     required membuat kolom wajib diisi. -->
             </div>
 
 
-            <!-- ==================================================
-                 5. KOLOM PASSWORD
-                 ================================================== -->
-
             <div class="input-group">
+                <!-- Wadah kolom password. -->
 
-                <!-- Tulisan penjelas untuk kolom password -->
                 <label for="password">Password</label>
+                <!-- Label untuk kolom password. -->
 
-                <!--
-                    type="password" membuat tulisan password
-                    tidak terlihat secara langsung ketika diketik.
-
-                    id="password" digunakan JavaScript untuk
-                    mengambil password yang dibuat pengguna.
-
-                    required berarti kolom wajib diisi.
-                -->
                 <input
                     type="password"
                     id="password"
                     placeholder="Create a password"
                     required
                 >
-
+                <!-- type="password" menyamarkan karakter password.
+                     id="password" menjadi penanda kolom.
+                     placeholder memberi petunjuk kepada pengguna.
+                     required berarti wajib diisi. -->
             </div>
 
 
-            <!-- ==================================================
-                 6. KOLOM KONFIRMASI PASSWORD
-                 Digunakan untuk memastikan password yang
-                 dimasukkan pengguna sudah sesuai.
-                 ================================================== -->
-
             <div class="input-group">
+                <!-- Wadah kolom konfirmasi password. -->
 
-                <!-- Tulisan penjelas untuk kolom konfirmasi password -->
                 <label for="confirm-password">
                     Confirm Password
                 </label>
+                <!-- Label untuk kolom konfirmasi password. -->
 
-                <!--
-                    type="password" menyamarkan tulisan password.
-
-                    id="confirm-password" menjadi penanda kolom
-                    untuk memasukkan ulang password.
-
-                    minlength="6" berarti password harus
-                    memiliki minimal 6 karakter.
-
-                    required berarti kolom wajib diisi.
-                -->
                 <input
                     type="password"
                     id="confirm-password"
@@ -161,57 +114,41 @@
                     minlength="6"
                     required
                 >
-
+                <!-- type="password" menyamarkan karakter.
+                     id="confirm-password" menjadi penanda input ini.
+                     placeholder memberi petunjuk pengisian.
+                     minlength="6" menetapkan panjang minimal 6 karakter.
+                     required membuat kolom wajib diisi. -->
             </div>
 
 
-            <!-- ==================================================
-                 7. TOMBOL REGISTER
-                 Digunakan untuk mengirim data pendaftaran.
-                 ================================================== -->
-
-            <!--
-                type="submit" berarti tombol ini mengirim formulir.
-
-                class="login-submit" digunakan agar tombol
-                memakai desain yang sama dengan tombol Login.
-            -->
+            <!-- Tombol untuk mengirim data pendaftaran. -->
             <button type="submit" class="login-submit">
+                <!-- type="submit" membuat tombol mengirim formulir.
+                     class login-submit memakai desain tombol yang sama
+                     dengan halaman Login. -->
                 Create Account
             </button>
 
         </form>
 
 
-        <!-- ==================================================
-             8. TAUTAN MENUJU LOGIN
-             Digunakan oleh pengguna yang sudah memiliki akun.
-             ================================================== -->
-
         <p class="register-text">
+            <!-- Teks untuk pengguna yang sudah memiliki akun. -->
 
             Already have an account?
 
-            <!-- Mengarahkan pengguna ke halaman Login -->
             <a href="login.html">Login</a>
-
+            <!-- Tautan untuk kembali ke halaman Login. -->
         </p>
 
     </div>
 
 
-    <!-- ==================================================
-         9. MENGHUBUNGKAN JAVASCRIPT
-         script.js menangani proses pendaftaran akun
-         dan menghubungkannya dengan Firebase.
-         ================================================== -->
-
-    <!--
-        type="module" diperlukan karena script.js
-        menggunakan import untuk mengambil fungsi Firebase.
-    -->
     <script type="module" src="script.js"></script>
+    <!-- Menghubungkan halaman Register dengan JavaScript.
+         type="module" diperlukan karena script.js menggunakan import
+         untuk mengambil fungsi dari Firebase. -->
 
 </body>
-
 </html>
