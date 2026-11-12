@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <!-- Mengatur karakter agar mendukung berbagai jenis teks -->
+    <meta charset="UTF-8">
+
+    <!-- Membuat tampilan menyesuaikan ukuran layar perangkat -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul yang muncul pada tab browser -->
+    <title>Focus Flow</title>
+
+    <!-- Menghubungkan halaman HTML dengan file CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================================================
+         1. NAVBAR
+         Bagian navigasi yang berada di atas halaman.
+         ================================================== -->
+
+    <nav class="navbar">
+
+        <!-- Nama atau logo website -->
+        <div class="logo">
+            Focus Flow
+        </div>
+
+        <!-- Daftar menu navigasi -->
+        <ul class="nav-links">
+
+            <!-- Menu menuju bagian Home -->
+            <li>
+                <a href="#">Home</a>
+            </li>
+
+            <!-- Menu Features (tautan belum diarahkan ke bagian tertentu) -->
+            <li>
+                <a href="#">Features</a>
+            </li>
+
+            <!-- Menu About (tautan belum diarahkan ke bagian tertentu) -->
+            <li>
+                <a href="#">About</a>
+            </li>
+
+        </ul>
+
+        <!-- Tombol menuju halaman Login -->
+        <a href="login.html" class="login-link">
+            Login
+        </a>
+
+    </nav>
+
+
+    <!-- ==================================================
+         2. HERO SECTION
+         Bagian utama yang memperkenalkan Focus Flow.
+         ================================================== -->
+
+    <main class="hero">
+
+        <!-- Label kecil sebagai identitas website -->
+        <div class="hero-badge">
+            ✨ Your Personal Productivity Space
+        </div>
+
+        <!-- Judul utama website -->
+        <h1>
+            Focus <span>Flow</span>
+        </h1>
+
+        <!-- Penjelasan singkat mengenai tujuan aplikasi -->
+        <p>
+            Organize your tasks. Focus on what matters.
+            Make every day more productive.
+        </p>
+
+        <!-- Tombol menuju halaman pendaftaran akun -->
+        <a href="register.html" class="hero-btn">
+            Get Started →
+        </a>
+
+    </main>
+
+
+    <!-- ==================================================
+         3. JAVASCRIPT
+         Menghubungkan halaman dengan file JavaScript.
+         ================================================== -->
+
+    <!--
+        Menggunakan type="module" karena script.js
+        menggunakan import untuk menghubungkan Firebase.
+    -->
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <!-- Mengatur karakter agar mendukung berbagai jenis teks -->
+    <meta charset="UTF-8">
+
+    <!-- Membuat tampilan menyesuaikan ukuran layar perangkat -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul halaman yang muncul pada tab browser -->
+    <title>Login - Focus Flow</title>
+
+    <!-- Menghubungkan halaman Login dengan file CSS -->
+    <link rel="stylesheet" href="- login-style.css">
+
+</head>
+
+<body>
+
+    <!-- ==================================================
+         1. LOGIN CONTAINER
+         Tempat seluruh elemen halaman Login ditampilkan.
+         ================================================== -->
+
+    <div class="login-container">
+
+        <!-- Judul halaman Login -->
+        <h1>Welcome Back!</h1>
+
+        <!-- Keterangan singkat untuk pengguna -->
+        <p>
+            Login to continue your productivity journey.
+        </p>
+
+
+        <!-- ==================================================
+             2. LOGIN FORM
+             Formulir untuk memasukkan email dan password.
+             ================================================== -->
+
+        <form id="login-form">
+
+            <!-- Input untuk memasukkan email -->
+            <div class="input-group">
+
+                <!-- Label yang menjelaskan kolom email -->
+                <label for="email">Email</label>
+
+                <!--
+                    type="email" membuat browser memeriksa
+                    format email yang dimasukkan.
+
+                    id="email" digunakan JavaScript untuk
+                    mengambil nilai email pengguna.
+                -->
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Input untuk memasukkan password -->
+            <div class="input-group">
+
+                <!-- Label yang menjelaskan kolom password -->
+                <label for="password">Password</label>
+
+                <!--
+                    type="password" menyamarkan karakter
+                    password yang sedang diketik.
+
+                    id="password" digunakan JavaScript
+                    untuk mengambil password pengguna.
+                -->
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Tombol untuk mengirim formulir Login -->
+            <button type="submit" class="login-submit">
+                Login
+            </button>
+
+        </form>
+
+
+        <!-- ==================================================
+             3. TAUTAN REGISTER
+             Mengarahkan pengguna yang belum memiliki akun
+             ke halaman pendaftaran.
+             ================================================== -->
+
+        <p class="register-text">
+
+            Don't have an account?
+
+            <a href="register.html">
+                Register
+            </a>
+
+        </p>
+
+    </div>
+
+
+    <!-- ==================================================
+         4. JAVASCRIPT
+         Menghubungkan halaman Login dengan script.js.
+
+         type="module" diperlukan karena script.js
+         menggunakan import Firebase.
+         ================================================== -->
+
+    <script type="module" src="script.js"></script>
+
+</body>
+
+</html>

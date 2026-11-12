@@ -1,0 +1,877 @@
+
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Membuat tampilan website menyesuaikan ukuran layar perangkat -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul yang muncul pada tab browser -->
+    <title>Settings - Focus Flow</title>
+
+    <!-- Menghubungkan halaman Settings dengan file CSS -->
+    <link rel="stylesheet" href="settings-style.css">
+
+    <!-- Menghubungkan font Poppins dari Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ==================================================
+         1. SIDEBAR NAVIGATION
+         Bagian menu yang digunakan untuk berpindah halaman.
+         ================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- Logo dan nama aplikasi -->
+        <div class="sidebar-logo">
+
+            <!-- Simbol kecil untuk logo Focus Flow -->
+            <div class="logo-icon">✦</div>
+
+            <div>
+                <h2>Focus Flow</h2>
+                <p>Study Productivity</p>
+            </div>
+
+        </div>
+
+        <!-- Daftar menu navigasi -->
+        <nav class="sidebar-menu">
+
+            <p class="menu-label">MAIN MENU</p>
+
+            <!-- Menu untuk membuka Dashboard -->
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="menu-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <!-- Menu untuk membuka jadwal belajar -->
+            <a href="study-schedule.html" class="sidebar-link">
+                <span class="menu-icon">▦</span>
+                <span>Study Schedule</span>
+            </a>
+
+            <!-- Menu untuk menuju bagian My Tasks di Dashboard -->
+            <a href="dashboard.html#my-tasks" class="sidebar-link">
+                <span class="menu-icon">✓</span>
+                <span>My Tasks</span>
+            </a>
+
+            <!-- Menu untuk menuju bagian Pomodoro di Dashboard -->
+            <a href="dashboard.html#pomodoro" class="sidebar-link">
+                <span class="menu-icon">◷</span>
+                <span>Pomodoro Timer</span>
+            </a>
+
+            <!-- Menu untuk menuju bagian riwayat belajar -->
+            <a href="dashboard.html#study-history" class="sidebar-link">
+                <span class="menu-icon">▤</span>
+                <span>Study History</span>
+            </a>
+
+            <p class="menu-label">PREFERENCES</p>
+
+            <!-- Menu Settings diberi class active karena sedang dibuka -->
+            <a href="#settings-home" class="sidebar-link active">
+                <span class="menu-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <!-- Menu untuk menuju informasi akun -->
+            <a href="#profile-information" class="sidebar-link">
+                <span class="menu-icon">♙</span>
+                <span>Account</span>
+            </a>
+
+            <!-- Menu untuk menuju pengaturan notifikasi -->
+            <a href="#notification-settings" class="sidebar-link">
+                <span class="menu-icon">♧</span>
+                <span>Notification</span>
+            </a>
+
+            <!-- Menu untuk menuju bantuan penggunaan aplikasi -->
+            <a href="#help-settings" class="sidebar-link">
+                <span class="menu-icon">?</span>
+                <span>Help</span>
+            </a>
+
+        </nav>
+
+        <!-- Informasi singkat aplikasi di bagian bawah sidebar -->
+        <div class="sidebar-footer">
+            <p>Focus Flow</p>
+            <span>Stay focused, achieve more.</span>
+        </div>
+
+    </aside>
+
+
+    <!-- ==================================================
+         2. MAIN CONTENT
+         Bagian utama yang menampilkan seluruh pengaturan.
+         ID settings-home menjadi tujuan menu Settings.
+         ================================================== -->
+
+    <main class="main-content" id="settings-home">
+
+        <!-- Header halaman Settings -->
+        <header class="page-header">
+
+            <div>
+                <p class="page-subtitle">PREFERENCES</p>
+                <h1>Settings</h1>
+
+                <p class="header-description">
+                    Atur akun dan pengalaman belajar kamu di Focus Flow.
+                </p>
+            </div>
+
+            <!-- Penanda bahwa halaman ini berisi pengaturan pribadi -->
+            <div class="header-badge">
+                <span class="badge-icon">⚙</span>
+                <span>Personal Settings</span>
+            </div>
+
+        </header>
+
+
+        <!-- ==================================================
+             3. ACCOUNT / PROFILE INFORMATION
+             Menampilkan nama dan email pengguna yang sedang login.
+             ================================================== -->
+
+        <section class="settings-card" id="profile-information">
+
+            <div class="section-heading">
+
+                <div class="section-icon purple-icon">♙</div>
+
+                <div>
+                    <h2>Account Information</h2>
+
+                    <p>
+                        Informasi akun yang sedang digunakan.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="profile-information">
+
+                <!-- Tampilan simbol foto profil sederhana -->
+                <div class="profile-avatar">
+                    <span>♙</span>
+                </div>
+
+                <div class="profile-details">
+
+                    <!-- Kolom untuk menampilkan nama pengguna -->
+                    <div class="form-group">
+
+                        <label for="profile-name">
+                            Nama Pengguna
+                        </label>
+
+                        <!--
+                            ID profile-name:
+                            Penanda agar JavaScript dapat menemukan kolom nama.
+
+                            readonly:
+                            Nama hanya ditampilkan dan tidak bisa diubah dari kolom ini.
+                        -->
+                        <input
+                            type="text"
+                            id="profile-name"
+                            placeholder="Nama pengguna"
+                            readonly>
+
+                    </div>
+
+                    <!-- Kolom untuk menampilkan email pengguna -->
+                    <div class="form-group">
+
+                        <label for="profile-email">
+                            Email
+                        </label>
+
+                        <!--
+                            ID profile-email:
+                            Penanda agar JavaScript dapat menemukan kolom email.
+
+                            readonly:
+                            Email hanya ditampilkan, bukan untuk diedit.
+                        -->
+                        <input
+                            type="email"
+                            id="profile-email"
+                            placeholder="Email pengguna"
+                            readonly>
+
+                    </div>
+
+                    <p class="profile-note">
+                        Nama dan email berasal dari akun Firebase.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             4. NOTIFICATION SETTINGS
+             Mengatur pilihan pengingat untuk pengguna.
+             ================================================== -->
+
+        <section class="settings-card" id="notification-settings">
+
+            <div class="section-heading">
+
+                <div class="section-icon pink-icon">♧</div>
+
+                <div>
+                    <h2>Notification Settings</h2>
+
+                    <p>
+                        Atur preferensi pemberitahuan kamu.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="notification-list">
+
+                <!-- Pengaturan pengingat tugas -->
+                <div class="notification-item">
+
+                    <div class="notification-description">
+
+                        <h3>Task Reminder</h3>
+
+                        <p>
+                            Preferensi pengingat untuk tugas belajar.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <!--
+                            ID task-notification:
+                            Penanda untuk pilihan pengingat tugas.
+
+                            checked:
+                            Artinya pilihan ini aktif secara bawaan.
+                        -->
+                        <input
+                            type="checkbox"
+                            id="task-notification"
+                            checked>
+
+                        <!-- Bagian tampilan tombol geser -->
+                        <span class="switch-slider"></span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- Pengaturan pengingat jadwal belajar -->
+                <div class="notification-item">
+
+                    <div class="notification-description">
+
+                        <h3>Study Reminder</h3>
+
+                        <p>
+                            Preferensi pengingat jadwal belajar.
+                        </p>
+
+                    </div>
+
+                    <label class="switch">
+
+                        <!--
+                            ID study-notification:
+                            Penanda untuk pilihan pengingat jadwal belajar.
+
+                            checked:
+                            Pilihan ini aktif secara bawaan.
+                        -->
+                        <input
+                            type="checkbox"
+                            id="study-notification"
+                            checked>
+
+                        <span class="switch-slider"></span>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <p class="notification-note">
+                Pengaturan ini menyimpan preferensi notifikasi.
+                Pengiriman notifikasi otomatis memerlukan fitur
+                tambahan.
+            </p>
+
+        </section>
+
+
+        <!-- ==================================================
+             5. APPEARANCE SETTINGS
+             Memilih warna atau tema tampilan website.
+             ================================================== -->
+
+        <section class="settings-card" id="appearance-settings">
+
+            <div class="section-heading">
+
+                <div class="section-icon blue-icon">◐</div>
+
+                <div>
+                    <h2>Appearance</h2>
+
+                    <p>
+                        Pilih warna tampilan website Focus Flow.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="theme-options">
+
+                <!-- Pilihan tema Lavender -->
+                <label class="theme-option">
+
+                    <!--
+                        name="theme":
+                        Semua pilihan tema memakai nama yang sama agar
+                        hanya satu tema yang bisa dipilih.
+
+                        value="lavender":
+                        Nilai yang dibaca JavaScript ketika tema Lavender dipilih.
+
+                        checked:
+                        Tema Lavender menjadi pilihan awal.
+                    -->
+                    <input
+                        type="radio"
+                        name="theme"
+                        value="lavender"
+                        checked>
+
+                    <!-- Contoh tampilan tema Lavender -->
+                    <div class="theme-preview lavender-preview">
+                        <div class="preview-top"></div>
+
+                        <div class="preview-content">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="theme-name">
+                        <span class="theme-color-dot lavender-dot"></span>
+                        Lavender
+                    </div>
+
+                </label>
+
+
+                <!-- Pilihan tema Pink -->
+                <label class="theme-option">
+
+                    <!-- value pink menjadi nilai tema ketika dipilih -->
+                    <input
+                        type="radio"
+                        name="theme"
+                        value="pink">
+
+                    <div class="theme-preview pink-preview">
+                        <div class="preview-top"></div>
+
+                        <div class="preview-content">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="theme-name">
+                        <span class="theme-color-dot pink-dot"></span>
+                        Pink
+                    </div>
+
+                </label>
+
+
+                <!-- Pilihan tema Blue -->
+                <label class="theme-option">
+
+                    <!-- value blue menjadi nilai tema ketika dipilih -->
+                    <input
+                        type="radio"
+                        name="theme"
+                        value="blue">
+
+                    <div class="theme-preview blue-preview">
+                        <div class="preview-top"></div>
+
+                        <div class="preview-content">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="theme-name">
+                        <span class="theme-color-dot blue-dot"></span>
+                        Blue
+                    </div>
+
+                </label>
+
+
+                <!-- Pilihan tema Green -->
+                <label class="theme-option">
+
+                    <!-- value green menjadi nilai tema ketika dipilih -->
+                    <input
+                        type="radio"
+                        name="theme"
+                        value="green">
+
+                    <div class="theme-preview green-preview">
+                        <div class="preview-top"></div>
+
+                        <div class="preview-content">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="theme-name">
+                        <span class="theme-color-dot green-dot"></span>
+                        Green
+                    </div>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             6. STUDY PREFERENCES
+             Mengatur target belajar dan durasi Pomodoro.
+             ================================================== -->
+
+        <section class="settings-card" id="study-preferences">
+
+            <div class="section-heading">
+
+                <div class="section-icon green-icon">◷</div>
+
+                <div>
+                    <h2>Study Preferences</h2>
+
+                    <p>
+                        Atur target dan durasi belajar.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="preferences-grid">
+
+                <!-- Target belajar setiap hari -->
+                <div class="form-group">
+
+                    <label for="daily-study-goal">
+                        Daily Study Goal
+                    </label>
+
+                    <div class="input-with-unit">
+
+                        <!--
+                            ID daily-study-goal:
+                            Penanda untuk kolom target belajar harian.
+
+                            min="1" dan max="24":
+                            Jumlah jam yang bisa dimasukkan dibatasi 1 sampai 24.
+
+                            value="2":
+                            Target awal adalah 2 jam.
+                        -->
+                        <input
+                            type="number"
+                            id="daily-study-goal"
+                            min="1"
+                            max="24"
+                            value="2">
+
+                        <span>hours</span>
+
+                    </div>
+
+                    <small>
+                        Target belajar setiap hari.
+                    </small>
+
+                </div>
+
+
+                <!-- Durasi sesi fokus Pomodoro -->
+                <div class="form-group">
+
+                    <label for="focus-duration">
+                        Focus Duration
+                    </label>
+
+                    <div class="input-with-unit">
+
+                        <!--
+                            ID focus-duration:
+                            Penanda untuk kolom lama waktu fokus.
+
+                            value="25":
+                            Durasi fokus awal adalah 25 menit.
+                        -->
+                        <input
+                            type="number"
+                            id="focus-duration"
+                            min="1"
+                            max="120"
+                            value="25">
+
+                        <span>minutes</span>
+
+                    </div>
+
+                    <small>
+                        Durasi sesi fokus Pomodoro.
+                    </small>
+
+                </div>
+
+
+                <!-- Durasi istirahat pendek -->
+                <div class="form-group">
+
+                    <label for="short-break-duration">
+                        Short Break
+                    </label>
+
+                    <div class="input-with-unit">
+
+                        <!--
+                            ID short-break-duration:
+                            Penanda untuk kolom durasi istirahat pendek.
+
+                            value="5":
+                            Durasi awal istirahat pendek adalah 5 menit.
+                        -->
+                        <input
+                            type="number"
+                            id="short-break-duration"
+                            min="1"
+                            max="60"
+                            value="5">
+
+                        <span>minutes</span>
+
+                    </div>
+
+                    <small>
+                        Durasi istirahat pendek.
+                    </small>
+
+                </div>
+
+
+                <!-- Durasi istirahat panjang -->
+                <div class="form-group">
+
+                    <label for="long-break-duration">
+                        Long Break
+                    </label>
+
+                    <div class="input-with-unit">
+
+                        <!--
+                            ID long-break-duration:
+                            Penanda untuk kolom durasi istirahat panjang.
+
+                            value="15":
+                            Durasi awal istirahat panjang adalah 15 menit.
+                        -->
+                        <input
+                            type="number"
+                            id="long-break-duration"
+                            min="1"
+                            max="120"
+                            value="15">
+
+                        <span>minutes</span>
+
+                    </div>
+
+                    <small>
+                        Durasi istirahat panjang.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             7. HELP / FAQ
+             Berisi pertanyaan umum tentang penggunaan aplikasi.
+             ================================================== -->
+
+        <section class="settings-card" id="help-settings">
+
+            <div class="section-heading">
+
+                <div class="section-icon yellow-icon">?</div>
+
+                <div>
+                    <h2>Help & Support</h2>
+
+                    <p>
+                        Informasi mengenai penggunaan Focus Flow.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="faq-list">
+
+                <!-- Pertanyaan pertama -->
+                <details class="help-item">
+
+                    <summary>
+                        Apa fungsi Focus Flow?
+                    </summary>
+
+                    <p>
+                        Focus Flow adalah website produktivitas belajar
+                        yang membantu pengguna mengatur tugas,
+                        jadwal belajar, dan waktu fokus.
+                    </p>
+
+                </details>
+
+
+                <!-- Pertanyaan kedua -->
+                <details class="help-item">
+
+                    <summary>
+                        Bagaimana cara mengubah tema?
+                    </summary>
+
+                    <p>
+                        Pilih salah satu tema pada bagian Appearance,
+                        kemudian tekan tombol Save Settings.
+                    </p>
+
+                </details>
+
+
+                <!-- Pertanyaan ketiga -->
+                <details class="help-item">
+
+                    <summary>
+                        Bagaimana cara mengatur durasi Pomodoro?
+                    </summary>
+
+                    <p>
+                        Ubah Focus Duration, Short Break, dan Long Break
+                        sesuai kebutuhan, kemudian simpan pengaturan.
+                    </p>
+
+                </details>
+
+
+                <!-- Pertanyaan keempat -->
+                <details class="help-item">
+
+                    <summary>
+                        Apakah pengaturan tersimpan?
+                    </summary>
+
+                    <p>
+                        Pengaturan disimpan pada Firebase Firestore
+                        sesuai dengan akun pengguna yang sedang login.
+                    </p>
+
+                </details>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             8. ACTION BUTTONS
+             Tombol untuk menyimpan atau mengembalikan pengaturan.
+             ================================================== -->
+
+        <section class="settings-actions">
+
+            <div class="action-description">
+
+                <h3>Save Your Preferences</h3>
+
+                <p>
+                    Simpan pengaturan agar dapat digunakan kembali.
+                </p>
+
+            </div>
+
+            <div class="action-buttons">
+
+                <!--
+                    ID reset-settings-btn:
+                    Penanda yang digunakan JavaScript untuk menemukan tombol Reset.
+
+                    Tombol ini digunakan untuk mengembalikan pengaturan ke nilai awal.
+                -->
+                <button
+                    type="button"
+                    id="reset-settings-btn"
+                    class="btn-reset">
+
+                    Reset Settings
+
+                </button>
+
+                <!--
+                    ID save-settings-btn:
+                    Penanda yang digunakan JavaScript untuk menemukan tombol Save.
+
+                    Tombol ini digunakan untuk menyimpan pengaturan pengguna.
+                -->
+                <button
+                    type="button"
+                    id="save-settings-btn"
+                    class="btn-save">
+
+                    Save Settings
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!--
+            ID settings-message:
+            Tempat JavaScript menampilkan pesan setelah pengguna
+            menyimpan atau mengembalikan pengaturan.
+
+            role="status":
+            Memberi tahu pembaca layar bahwa bagian ini berisi
+            informasi status, misalnya pesan berhasil atau gagal.
+        -->
+        <div
+            id="settings-message"
+            class="settings-message"
+            role="status">
+
+        </div>
+
+
+        <!-- ==================================================
+             9. LOGOUT
+             Tombol untuk keluar dari akun yang sedang digunakan.
+             ================================================== -->
+
+        <section class="logout-card">
+
+            <div>
+
+                <h3>Logout</h3>
+
+                <p>
+                    Keluar dari akun Focus Flow yang sedang digunakan.
+                </p>
+
+            </div>
+
+            <!--
+                ID logout-btn:
+                Penanda yang digunakan JavaScript untuk menemukan tombol Logout.
+
+                Ketika ditekan, JavaScript akan menjalankan proses keluar
+                dari akun Firebase.
+            -->
+            <button
+                type="button"
+                id="logout-btn"
+                class="btn-logout">
+
+                Logout
+
+            </button>
+
+        </section>
+
+
+        <!-- Footer atau bagian paling bawah halaman -->
+        <footer class="page-footer">
+
+            <p>
+                © 2026 Focus Flow.
+                Stay focused, achieve more.
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==================================================
+         10. JAVASCRIPT
+         Menghubungkan halaman Settings dengan fungsi JavaScript.
+         ================================================== -->
+
+    <!--
+        theme.js:
+        Mengatur tema website agar tampilan halaman mengikuti
+        tema yang dipilih dan disimpan pengguna.
+    -->
+    <script type="module" src="theme.js"></script>
+
+    <!--
+        settings.js:
+        Mengatur fungsi halaman Settings, seperti membaca data akun,
+        mengambil dan menyimpan pengaturan, serta tombol Reset dan Save.
+    -->
+    <script type="module" src="settings.js"></script>
+
+</body>
+</html>

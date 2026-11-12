@@ -1,0 +1,377 @@
+/* =========================================================
+   FOCUS FLOW - LOGIN STYLE
+   Nama file: - login-style.css
+
+   FUNGSI:
+   1. Mengatur tampilan halaman Login.
+   2. Mengatur posisi kartu Login.
+   3. Mengatur tampilan kolom Email dan Password.
+   4. Mengatur tampilan tombol Login.
+   5. Menyesuaikan tampilan pada layar kecil.
+   ========================================================= */
+
+
+/* =========================================================
+   1. RESET CSS
+   Menghilangkan pengaturan bawaan browser.
+   ========================================================= */
+
+* {
+
+    /* Menghilangkan jarak luar bawaan browser */
+    margin: 0;
+
+    /* Menghilangkan jarak dalam bawaan browser */
+    padding: 0;
+
+    /* Memasukkan padding dan border ke dalam ukuran elemen */
+    box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   2. BODY
+   Mengatur tampilan seluruh halaman Login.
+   ========================================================= */
+
+body {
+
+    /* Menggunakan jenis huruf Arial */
+    font-family: Arial, sans-serif;
+
+    /* Memberikan latar belakang gradasi berwarna lavender */
+    background: linear-gradient(
+        135deg,
+        #f5f0ff,
+        #ffffff,
+        #e9ddff
+    );
+
+    /* Memastikan tinggi halaman minimal satu layar */
+    min-height: 100vh;
+
+    /* Menggunakan Flexbox untuk mengatur posisi elemen */
+    display: flex;
+
+    /* Menempatkan kartu Login di tengah secara horizontal */
+    justify-content: center;
+
+    /* Menempatkan kartu Login di tengah secara vertikal */
+    align-items: center;
+
+    /* Memberikan jarak agar kartu tidak menempel pada tepi layar */
+    padding: 20px;
+
+}
+
+
+/* =========================================================
+   3. LOGIN CONTAINER
+   Mengatur kartu utama tempat formulir Login.
+   ========================================================= */
+
+.login-container {
+
+    /* Memberikan warna latar putih pada kartu */
+    background: white;
+
+    /* Membuat lebar kartu mengikuti ukuran layar */
+    width: 100%;
+
+    /* Membatasi lebar maksimal kartu */
+    max-width: 420px;
+
+    /* Memberikan ruang di dalam kartu */
+    padding: 40px;
+
+    /* Membuat sudut kartu membulat */
+    border-radius: 24px;
+
+    /* Memberikan bayangan lembut pada kartu */
+    box-shadow: 0 15px 50px
+        rgba(109, 40, 217, 0.12);
+
+    /* Membuat tulisan berada di tengah */
+    text-align: center;
+
+}
+
+
+/* =========================================================
+   4. JUDUL LOGIN
+   Mengatur tampilan tulisan Welcome Back!
+   ========================================================= */
+
+.login-container h1 {
+
+    /* Mengatur ukuran tulisan judul */
+    font-size: 32px;
+
+    /* Memberikan warna ungu pada judul */
+    color: #6d28d9;
+
+    /* Memberikan jarak antara judul dan keterangan */
+    margin-bottom: 12px;
+
+}
+
+
+/* =========================================================
+   5. DESKRIPSI LOGIN
+   Mengatur tulisan penjelasan di bawah judul.
+   ========================================================= */
+
+.login-container p {
+
+    /* Mengatur ukuran tulisan */
+    font-size: 15px;
+
+    /* Memberikan warna abu-abu keunguan */
+    color: #6b6580;
+
+    /* Mengatur jarak antarbaris tulisan */
+    line-height: 1.6;
+
+    /* Memberikan jarak bawah */
+    margin-bottom: 30px;
+
+}
+
+
+/* =========================================================
+   6. FORM LOGIN
+   Mengatur posisi formulir Email dan Password.
+   ========================================================= */
+
+.login-container form {
+
+    /* Membuat isi formulir rata kiri */
+    text-align: left;
+
+}
+
+
+/* =========================================================
+   7. INPUT GROUP
+   Mengatur jarak antara satu kelompok input dan lainnya.
+   ========================================================= */
+
+.input-group {
+
+    /* Memberikan jarak bawah setiap kelompok input */
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   8. LABEL INPUT
+   Mengatur tulisan Email dan Password.
+   ========================================================= */
+
+.input-group label {
+
+    /* Membuat label berada pada baris tersendiri */
+    display: block;
+
+    /* Mengatur ukuran tulisan label */
+    font-size: 14px;
+
+    /* Membuat tulisan label menjadi tebal */
+    font-weight: bold;
+
+    /* Memberikan warna gelap keunguan */
+    color: #3b3553;
+
+    /* Memberikan jarak antara label dan kolom input */
+    margin-bottom: 8px;
+
+}
+
+
+/* =========================================================
+   9. KOLOM INPUT
+   Mengatur tampilan kolom Email dan Password.
+   ========================================================= */
+
+.input-group input {
+
+    /* Membuat kolom input memenuhi lebar wadah */
+    width: 100%;
+
+    /* Memberikan ruang di dalam kolom */
+    padding: 14px 16px;
+
+    /* Memberikan garis tepi berwarna lavender */
+    border: 1px solid #ddd6fe;
+
+    /* Membuat sudut kolom membulat */
+    border-radius: 12px;
+
+    /* Mengatur ukuran tulisan di dalam kolom */
+    font-size: 15px;
+
+    /* Memberikan warna latar yang lembut */
+    background: #faf9ff;
+
+    /* Menghilangkan garis luar bawaan browser */
+    outline: none;
+
+    /* Membuat perubahan tampilan berlangsung halus */
+    transition: 0.3s;
+
+}
+
+
+/* =========================================================
+   10. INPUT FOCUS
+   Mengatur tampilan ketika kolom sedang dipilih.
+   ========================================================= */
+
+.input-group input:focus {
+
+    /* Mengubah warna garis tepi menjadi ungu */
+    border-color: #7c3aed;
+
+    /* Mengubah latar kolom menjadi putih */
+    background: white;
+
+    /* Memberikan efek bayangan tipis */
+    box-shadow: 0 0 0 3px
+        rgba(124, 58, 237, 0.1);
+
+}
+
+
+/* =========================================================
+   11. TOMBOL LOGIN
+   Mengatur tampilan tombol untuk masuk ke akun.
+   ========================================================= */
+
+.login-submit {
+
+    /* Membuat tombol memenuhi lebar formulir */
+    width: 100%;
+
+    /* Memberikan ruang di dalam tombol */
+    padding: 15px;
+
+    /* Memberikan jarak dari elemen sebelumnya */
+    margin-top: 10px;
+
+    /* Memberikan latar gradasi ungu */
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6d28d9
+    );
+
+    /* Mengubah warna tulisan menjadi putih */
+    color: white;
+
+    /* Menghilangkan garis tepi tombol */
+    border: none;
+
+    /* Membuat sudut tombol membulat */
+    border-radius: 12px;
+
+    /* Mengatur ukuran tulisan tombol */
+    font-size: 16px;
+
+    /* Membuat tulisan tombol menjadi tebal */
+    font-weight: bold;
+
+    /* Mengubah kursor menjadi tangan */
+    cursor: pointer;
+
+    /* Membuat perubahan tampilan lebih halus */
+    transition: 0.3s;
+
+}
+
+
+/* =========================================================
+   12. EFEK HOVER TOMBOL LOGIN
+   Mengatur tampilan ketika kursor diarahkan ke tombol.
+   ========================================================= */
+
+.login-submit:hover {
+
+    /* Mengangkat tombol sedikit ke atas */
+    transform: translateY(-2px);
+
+    /* Memberikan bayangan pada tombol */
+    box-shadow: 0 8px 20px
+        rgba(109, 40, 217, 0.25);
+
+}
+
+
+/* =========================================================
+   13. TEKS REGISTER
+   Mengatur tulisan untuk pengguna yang belum punya akun.
+   ========================================================= */
+
+.login-container .register-text {
+
+    /* Memberikan jarak dari formulir */
+    margin-top: 25px;
+
+    /* Menghilangkan jarak bawah */
+    margin-bottom: 0;
+
+    /* Mengatur ukuran tulisan */
+    font-size: 14px;
+
+}
+
+
+/* Mengatur tautan menuju halaman Register */
+
+.register-text a {
+
+    /* Memberikan warna ungu pada tautan */
+    color: #7c3aed;
+
+    /* Membuat tulisan tautan menjadi tebal */
+    font-weight: bold;
+
+    /* Menghilangkan garis bawah bawaan tautan */
+    text-decoration: none;
+
+}
+
+
+/* Memberikan efek ketika kursor diarahkan ke tautan */
+
+.register-text a:hover {
+
+    /* Menampilkan garis bawah pada tautan */
+    text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   14. RESPONSIVE DESIGN
+   Menyesuaikan tampilan ketika dibuka melalui ponsel.
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    /* Mengurangi ruang di dalam kartu Login */
+    .login-container {
+
+        padding: 30px 22px;
+
+    }
+
+    /* Mengurangi ukuran judul pada layar kecil */
+    .login-container h1 {
+
+        font-size: 28px;
+
+    }
+
+}

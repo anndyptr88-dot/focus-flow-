@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <!-- ==================================================
+         FOCUS FLOW - DASHBOARD
+         FILE: dashboard.html
+
+         FUNGSI:
+         1. Menampilkan halaman utama Dashboard.
+         2. Menampilkan menu navigasi.
+         3. Menampilkan statistik tugas.
+         4. Menyediakan fitur My Tasks.
+         5. Menyediakan Pomodoro Timer.
+         6. Menampilkan Study History.
+         7. Menampilkan grafik produktivitas.
+         8. Menghubungkan tema dari Settings.
+
+         CATATAN:
+         HTML digunakan untuk menyusun struktur halaman.
+         CSS mengatur tampilan halaman.
+         JavaScript mengatur fungsi dan interaksi halaman.
+    ================================================== -->
+
+
+    <!-- Mengatur karakter agar mendukung tulisan Bahasa Indonesia -->
+    <meta charset="UTF-8">
+
+    <!-- Membuat tampilan menyesuaikan ukuran layar perangkat -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Judul yang muncul pada tab browser -->
+    <title>Dashboard | Focus Flow</title>
+
+    <!-- Menghubungkan halaman dengan file CSS Dashboard -->
+    <link rel="stylesheet" href="dashboard-style.css">
+
+
+    <!-- Menghubungkan Google Fonts untuk menggunakan font Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Memilih ketebalan font Poppins yang digunakan -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- ==================================================
+         BAGIAN 1: LAYOUT UTAMA
+    ================================================== -->
+
+    <!-- app-layout adalah pembungkus seluruh halaman Dashboard -->
+    <div class="app-layout">
+
+
+        <!-- ==================================================
+             BAGIAN 2: SIDEBAR NAVIGASI
+        ================================================== -->
+
+        <!-- Sidebar merupakan menu navigasi di sebelah kiri -->
+        <aside class="sidebar">
+
+
+            <!-- BAGIAN 2A: LOGO APLIKASI -->
+
+            <div class="sidebar-logo">
+
+                <!-- Nama aplikasi -->
+                <h2>Focus Flow</h2>
+
+                <!-- Keterangan singkat aplikasi -->
+                <p>Study Productivity</p>
+
+            </div>
+
+
+            <!-- BAGIAN 2B: MENU UTAMA -->
+
+            <div class="sidebar-menu">
+
+                <!-- Judul kelompok menu -->
+                <p class="sidebar-heading">
+                    MENU UTAMA
+                </p>
+
+
+                <!-- Navigasi utama aplikasi -->
+                <nav class="sidebar-nav">
+
+
+                    <!-- MENU DASHBOARD -->
+
+                    <a
+                        href="dashboard.html"
+                        class="sidebar-link active"
+                    >
+
+                        <!-- Ikon Dashboard -->
+                        <span class="menu-icon">⌂</span>
+
+                        <!-- Nama menu -->
+                        <span>Dashboard</span>
+
+                    </a>
+
+
+                    <!-- MENU MY TASKS -->
+
+                    <a
+                        href="#my-tasks"
+                        class="sidebar-link"
+                    >
+
+                        <!-- Ikon tugas -->
+                        <span class="menu-icon">☷</span>
+
+                        <!-- Nama menu -->
+                        <span>My Tasks</span>
+
+                    </a>
+
+
+                    <!-- MENU STUDY SCHEDULE -->
+
+                    <a
+                        href="study-schedule.html"
+                        class="sidebar-link"
+                    >
+
+                        <!-- Ikon jadwal belajar -->
+                        <span class="menu-icon">▦</span>
+
+                        <!-- Nama menu -->
+                        <span>Study Schedule</span>
+
+                    </a>
+
+
+                    <!-- MENU POMODORO TIMER -->
+
+                    <a
+                        href="#pomodoro"
+                        class="sidebar-link"
+                    >
+
+                        <!-- Ikon timer -->
+                        <span class="menu-icon">◷</span>
+
+                        <!-- Nama menu -->
+                        <span>Pomodoro Timer</span>
+
+                    </a>
+
+
+                    <!-- MENU STUDY HISTORY -->
+
+                    <a
+                        href="#study-history"
+                        class="sidebar-link"
+                    >
+
+                        <!-- Ikon riwayat belajar -->
+                        <span class="menu-icon">▥</span>
+
+                        <!-- Nama menu -->
+                        <span>Study History</span>
+
+                    </a>
+
+
+                </nav>
+
+            </div>
+
+
+            <!-- ==================================================
+                 BAGIAN 2C: MENU PENGATURAN
+            ================================================== -->
+
+            <div class="sidebar-menu settings-menu">
+
+                <!-- Judul kelompok pengaturan -->
+                <p class="sidebar-heading">
+                    PENGATURAN
+                </p>
+
+
+                <!-- Navigasi pengaturan -->
+                <nav class="sidebar-nav">
+
+
+                    <!-- MENU SETTINGS -->
+
+                    <a
+                        href="settings.html"
+                        class="sidebar-link"
+                    >
+
+                        <!-- Ikon Settings -->
+                        <span class="menu-icon">⚙</span>
+
+                        <!-- Nama menu -->
+                        <span>Settings</span>
+
+                    </a>
+
+
+                    <!-- MENU ACCOUNT -->
+
+                    <span
+                        class="sidebar-link disabled"
+                        aria-disabled="true"
+                        title="Fitur akan tersedia"
+                    >
+
+                        <!-- Ikon Account -->
+                        <span class="menu-icon">♙</span>
+
+                        <!-- Nama menu -->
+                        <span>Account</span>
+
+                    </span>
+
+
+                    <!-- MENU NOTIFICATION -->
+
+                    <span
+                        class="sidebar-link disabled"
+                        aria-disabled="true"
+                        title="Fitur akan tersedia"
+                    >
+
+                        <!-- Ikon Notification -->
+                        <span class="menu-icon">♧</span>
+
+                        <!-- Nama menu -->
+                        <span>Notification</span>
+
+                    </span>
+
+
+                    <!-- MENU HELP -->
+
+                    <span
+                        class="sidebar-link disabled"
+                        aria-disabled="true"
+                        title="Fitur akan tersedia"
+                    >
+
+                        <!-- Ikon Help -->
+                        <span class="menu-icon">?</span>
+
+                        <!-- Nama menu -->
+                        <span>Help</span>
+
+                    </span>
+
+
+                </nav>
+
+            </div>
+
+
+            <!-- ==================================================
+                 BAGIAN 2D: PROFIL DAN LOGOUT
+            ================================================== -->
+
+            <div class="sidebar-bottom">
+
+
+                <!-- INFORMASI AKUN -->
+
+                <div class="sidebar-profile">
+
+                    <!-- Avatar atau ikon akun -->
+                    <div class="profile-avatar">
+                        ♙
+                    </div>
+
+                    <!-- Informasi akun yang ditampilkan -->
+                    <div class="profile-info">
+
+                        <!-- Judul informasi akun -->
+                        <h4>My Account</h4>
+
+                        <!-- Keterangan akun -->
+                        <p>Focus Flow Member</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOMBOL LOGOUT -->
+
+                <button
+                    type="button"
+                    id="logout-btn"
+                    class="sidebar-logout"
+                >
+
+                    <!-- Ikon Logout -->
+                    <span class="menu-icon">⇥</span>
+
+                    <!-- Nama tombol -->
+                    <span>Logout</span>
+
+                </button>
+
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- ==================================================
+             BAGIAN 3: KONTEN UTAMA
+        ================================================== -->
+
+        <!-- main-content merupakan area utama Dashboard -->
+        <main class="main-content">
+
+
+            <!-- ==================================================
+                 BAGIAN 3A: HEADER HALAMAN
+            ================================================== -->
+
+            <header class="content-header">
+
+                <div>
+
+                    <!-- Keterangan posisi halaman -->
+                    <p class="header-subtitle">
+                        FOCUS FLOW / DASHBOARD
+                    </p>
+
+                    <!-- Judul halaman -->
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+            </header>
+
+
+            <!-- Pembungkus seluruh isi Dashboard -->
+            <div class="dashboard-container">
+
+
+                <!-- ==================================================
+                     BAGIAN 4: WELCOME SECTION
+                ================================================== -->
+
+                <section class="welcome-section">
+
+                    <!-- Judul sambutan Dashboard -->
+                    <h1>
+                        Welcome to Focus Flow!
+                    </h1>
+
+                    <!-- Penjelasan singkat tentang aplikasi -->
+                    <p>
+                        Atur tugasmu, fokus belajar, dan capai
+                        produktivitas yang lebih baik.
+                    </p>
+
+                </section>
+
+
+                <!-- ==================================================
+                     BAGIAN 5: STATISTIK TUGAS
+                ================================================== -->
+
+                <section class="stats-section">
+
+
+                    <!-- KARTU TOTAL TUGAS -->
+
+                    <div class="stats-card">
+
+                        <h3>
+                            Total Tasks
+                        </h3>
+
+                        <!--
+                            ID: total-tasks
+                            Fungsi: Tempat menampilkan jumlah seluruh tugas.
+                            Nilai akan diperbarui oleh tasks.js.
+                        -->
+                        <p id="total-tasks">
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <!-- KARTU TUGAS SELESAI -->
+
+                    <div class="stats-card">
+
+                        <h3>
+                            Completed
+                        </h3>
+
+                        <!--
+                            ID: completed-tasks
+                            Fungsi: Menampilkan jumlah tugas yang sudah selesai.
+                            Nilai diperbarui oleh tasks.js.
+                        -->
+                        <p id="completed-tasks">
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <!-- KARTU TUGAS BELUM SELESAI -->
+
+                    <div class="stats-card">
+
+                        <h3>
+                            Pending
+                        </h3>
+
+                        <!--
+                            ID: pending-tasks
+                            Fungsi: Menampilkan jumlah tugas yang belum selesai.
+                            Nilai diperbarui oleh tasks.js.
+                        -->
+                        <p id="pending-tasks">
+                            0
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                     BAGIAN 6: MY TASKS
+                ================================================== -->
+
+                <section
+                    class="tasks-section"
+                    id="my-tasks"
+                >
+
+
+                    <!-- BAGIAN 6A: JUDUL MY TASKS -->
+
+                    <div class="section-header">
+
+                        <h2>
+                            My Tasks
+                        </h2>
+
+                        <p>
+                            Kelola tugas sekolah dan kegiatanmu.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BAGIAN 6B: FORM TAMBAH TUGAS
+                    ================================================== -->
+
+                    <div class="task-form-container">
+
+
+                        <!-- Form untuk memasukkan tugas baru -->
+
+                        <form id="task-form">
+
+
+                            <!-- INPUT NAMA TUGAS -->
+
+                            <div class="form-group">
+
+                                <label for="task-input">
+                                    Nama Tugas
+                                </label>
+
+                                <!--
+                                    ID: task-input
+                                    Fungsi: Mengambil nama tugas yang dimasukkan.
+                                    Atribut required membuat input wajib diisi.
+                                -->
+                                <input
+                                    type="text"
+                                    id="task-input"
+                                    placeholder="Contoh: Mengerjakan tugas website"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- INPUT DEADLINE -->
+
+                            <div class="form-group">
+
+                                <label for="task-date">
+                                    Deadline
+                                </label>
+
+                                <!--
+                                    ID: task-date
+                                    Fungsi: Mengambil tanggal batas pengumpulan tugas.
+                                    type=date menyediakan pemilih tanggal.
+                                -->
+                                <input
+                                    type="date"
+                                    id="task-date"
+                                >
+
+                            </div>
+
+
+                            <!-- TOMBOL TAMBAH TUGAS -->
+
+                            <button
+                                type="submit"
+                                class="add-task-btn"
+                            >
+                                Tambah Tugas
+                            </button>
+
+
+                        </form>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BAGIAN 6C: PENCARIAN DAN FILTER TUGAS
+                    ================================================== -->
+
+                    <div class="task-tools">
+
+
+                        <!-- PENCARIAN TUGAS -->
+
+                        <div class="task-tool-group">
+
+                            <label for="task-search">
+                                Cari Tugas
+                            </label>
+
+                            <!--
+                                ID: task-search
+                                Fungsi: Mengambil kata kunci pencarian tugas.
+                                JavaScript menggunakan nilai ini untuk mencari tugas.
+                            -->
+                            <input
+                                type="text"
+                                id="task-search"
+                                class="task-tool-input"
+                                placeholder="Ketik nama tugas..."
+                            >
+
+                        </div>
+
+
+                        <!-- FILTER STATUS TUGAS -->
+
+                        <div class="task-tool-group">
+
+                            <label for="task-filter">
+                                Filter Status
+                            </label>
+
+                            <!--
+                                ID: task-filter
+                                Fungsi: Mengambil pilihan filter tugas.
+                                Pilihan tersedia: semua, pending, dan completed.
+                            -->
+                            <select
+                                id="task-filter"
+                                class="task-tool-select"
+                            >
+
+                                <!-- Menampilkan semua tugas -->
+                                <option value="all">
+                                    Semua Tugas
+                                </option>
+
+                                <!-- Menampilkan tugas yang belum selesai -->
+                                <option value="pending">
+                                    Belum Selesai
+                                </option>
+
+                                <!-- Menampilkan tugas yang sudah selesai -->
+                                <option value="completed">
+                                    Selesai
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BAGIAN 6D: DAFTAR TUGAS
+                    ================================================== -->
+
+                    <div class="task-list-container">
+
+                        <h3>
+                            Daftar Tugas
+                        </h3>
+
+                        <!--
+                            ID: task-list
+                            Fungsi: Menjadi tempat menampilkan daftar tugas.
+                            Data tugas dimasukkan oleh tasks.js.
+                        -->
+                        <div id="task-list">
+
+                            <p>
+                                Memuat daftar tugas...
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                     BAGIAN 7: POMODORO TIMER
+                ================================================== -->
+
+                <section
+                    class="pomodoro-section"
+                    id="pomodoro"
+                >
+
+
+                    <!-- JUDUL POMODORO -->
+
+                    <div class="pomodoro-header">
+
+                        <h2>
+                            Pomodoro Timer
+                        </h2>
+
+                        <p class="pomodoro-description">
+                            Fokus belajar dan istirahat secara teratur.
+                        </p>
+
+                    </div>
+
+
+                    <!-- KARTU TIMER -->
+
+                    <div class="pomodoro-card">
+
+
+                        <!-- JENIS SESI TIMER -->
+
+                        <!--
+                            ID: timer-mode
+                            Fungsi: Menampilkan jenis sesi timer,
+                            misalnya waktu fokus atau waktu istirahat.
+                        -->
+                        <p id="timer-mode">
+                            Waktu Fokus
+                        </p>
+
+
+                        <!-- TAMPILAN WAKTU -->
+
+                        <!--
+                            ID: timer-display
+                            Fungsi: Menampilkan hitungan waktu timer.
+                            Nilainya diperbarui oleh pomodoro.js.
+                        -->
+                        <h1 id="timer-display">
+                            25:00
+                        </h1>
+
+
+                        <!-- TOMBOL MULAI TIMER -->
+
+                        <button
+                            type="button"
+                            id="start-timer"
+                        >
+                            Mulai
+                        </button>
+
+
+                        <!-- TOMBOL JEDA TIMER -->
+
+                        <button
+                            type="button"
+                            id="pause-timer"
+                        >
+                            Jeda
+                        </button>
+
+
+                        <!-- TOMBOL RESET TIMER -->
+
+                        <button
+                            type="button"
+                            id="reset-timer"
+                        >
+                            Reset
+                        </button>
+
+
+                    </div>
+
+
+                </section>
+
+
+                <!-- ==================================================
+                     BAGIAN 8: STUDY HISTORY
+                ================================================== -->
+
+                <section
+                    class="study-history-section"
+                    id="study-history"
+                >
+
+
+                    <!-- BAGIAN 8A: JUDUL STUDY HISTORY -->
+
+                    <div class="study-history-header">
+
+                        <h2>
+                            Study History
+                        </h2>
+
+                        <p>
+                            Riwayat sesi fokus yang telah kamu selesaikan.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BAGIAN 8B: RINGKASAN PRODUKTIVITAS
+                    ================================================== -->
+
+                    <div class="study-summary">
+
+
+                        <!-- KARTU TOTAL SESI FOKUS -->
+
+                        <div class="study-summary-card">
+
+                            <p>
+                                Total Sesi Fokus
+                            </p>
+
+                            <!--
+                                ID: total-focus-sessions
+                                Fungsi: Menampilkan jumlah sesi fokus
+                                yang telah diselesaikan pengguna.
+                            -->
+                            <h3 id="total-focus-sessions">
+                                0
+                            </h3>
+
+                        </div>
+
+
+                        <!-- KARTU TOTAL WAKTU FOKUS -->
+
+                        <div class="study-summary-card">
+
+                            <p>
+                                Total Waktu Fokus
+                            </p>
+
+                            <!--
+                                ID: total-focus-minutes
+                                Fungsi: Menampilkan total durasi belajar
+                                dalam satuan menit.
+                            -->
+                            <h3 id="total-focus-minutes">
+                                0 menit
+                            </h3>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BAGIAN 8C: GRAFIK PRODUKTIVITAS
+                    ================================================== -->
+
+                    <div class="study-chart-section">
+
+
+                        <!-- JUDUL GRAFIK -->
+
+                        <div class="study-chart-header">
+
+                            <h3>
+                                Grafik Produktivitas
+                            </h3>
+
+                            <p>
+                                Aktivitas fokus selama 7 hari terakhir.
+                            </p>
+
+                        </div>
+
+
+                        <!-- PESAN STATUS GRAFIK -->
+
+                        <!--
+                            ID: study-chart-message
+                            Fungsi: Menampilkan informasi saat grafik
+                            sedang dimuat atau belum memiliki data.
+                        -->
+                        <p
+                            id="study-chart-message"
+                            class="study-chart-message"
+                        >
+                            Memuat grafik...
+                        </p>
+
+
+                        <!-- TEMPAT GRAFIK -->
+
+                        <!--
+                            ID: study-chart-bars
+                            Fungsi: Menjadi tempat menampilkan batang grafik.
+                            Data grafik diatur oleh study-chart.js.
+                        -->
+                        <div
+                            id="study-chart-bars"
+                            class="study-chart-bars"
+                        >
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ==================================================
+                         BAGIAN 8D: DAFTAR RIWAYAT BELAJAR
+                    ================================================== -->
+
+                    <h3>
+                        Riwayat Belajar
+                    </h3>
+
+
+                    <!--
+                        ID: study-history-list
+                        Fungsi: Menjadi tempat menampilkan daftar
+                        riwayat sesi belajar pengguna.
+                    -->
+                    <div
+                        id="study-history-list"
+                        class="study-history-container"
+                    >
+
+                        <p class="empty-history">
+                            Memuat riwayat belajar...
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+
+    </div>
+
+
+    <!-- ==================================================
+         BAGIAN 9: MENGHUBUNGKAN FILE JAVASCRIPT
+    ================================================== -->
+
+    <!--
+        Setiap script memiliki tugas yang berbeda.
+
+        type="module" digunakan agar JavaScript dapat
+        menggunakan fitur import dan export.
+    -->
+
+
+    <!-- SCRIPT 1: GLOBAL THEME -->
+
+    <!--
+        File theme.js bertugas:
+        1. Mengambil pengaturan tema.
+        2. Menerapkan tema yang dipilih pengguna.
+        3. Mengatur warna tampilan Dashboard.
+        4. Menjaga tema tetap sama saat berpindah halaman.
+    -->
+    <script
+        type="module"
+        src="theme.js"
+    ></script>
+
+
+    <!-- SCRIPT 2: LOGIN DAN LOGOUT -->
+
+    <!--
+        File script.js bertugas:
+        1. Mengelola pendaftaran akun.
+        2. Mengelola login.
+        3. Mengelola logout.
+        4. Memeriksa status login pengguna.
+    -->
+    <script
+        type="module"
+        src="script.js"
+    ></script>
+
+
+    <!-- SCRIPT 3: MY TASKS -->
+
+    <!--
+        File tasks.js bertugas:
+        1. Menambahkan tugas.
+        2. Menampilkan daftar tugas.
+        3. Mengubah status tugas.
+        4. Menghapus tugas.
+        5. Menghitung statistik tugas.
+        6. Menangani pencarian dan filter.
+    -->
+    <script
+        type="module"
+        src="tasks.js"
+    ></script>
+
+
+    <!-- SCRIPT 4: POMODORO TIMER -->
+
+    <!--
+        File pomodoro.js bertugas:
+        1. Menjalankan timer fokus.
+        2. Menjalankan timer istirahat.
+        3. Menangani tombol mulai.
+        4. Menangani tombol jeda.
+        5. Menangani tombol reset.
+    -->
+    <script
+        type="module"
+        src="pomodoro.js"
+    ></script>
+
+
+    <!-- SCRIPT 5: STUDY HISTORY -->
+
+    <!--
+        File study-history.js bertugas:
+        Mengambil dan menampilkan riwayat sesi belajar pengguna.
+    -->
+    <script
+        type="module"
+        src="study-history.js"
+    ></script>
+
+
+    <!-- SCRIPT 6: STUDY CHART -->
+
+    <!--
+        File study-chart.js bertugas:
+        Mengolah dan menampilkan grafik produktivitas
+        berdasarkan riwayat belajar pengguna.
+    -->
+    <script
+        type="module"
+        src="study-chart.js"
+    ></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,2016 @@
+/* ============================================================
+   FOCUS FLOW - DASHBOARD STYLE
+   Nama file: dashboard-style.css
+
+   File ini mengatur tampilan halaman Dashboard Focus Flow.
+
+   Bagian yang diatur:
+   1. Warna dan ukuran dasar.
+   2. Sidebar dan menu navigasi.
+   3. Konten Dashboard.
+   4. Kartu statistik.
+   5. My Tasks.
+   6. Pomodoro Timer.
+   7. Study History.
+   8. Grafik produktivitas.
+   9. Tampilan tablet dan HP.
+
+   Catatan:
+   CSS hanya mengatur tampilan website.
+   Fungsi aplikasi tetap dijalankan oleh JavaScript dan Firebase.
+   ============================================================ */
+
+
+/* ============================================================
+   1. RESET CSS
+
+   Bagian ini menghilangkan jarak bawaan browser.
+   Tujuannya agar tampilan setiap elemen lebih konsisten.
+   ============================================================ */
+
+* {
+    margin: 0;              /* Menghilangkan jarak luar elemen */
+    padding: 0;             /* Menghilangkan jarak dalam elemen */
+    box-sizing: border-box; /* Menghitung padding dan garis tepi dalam ukuran elemen */
+}
+
+
+/* ============================================================
+   2. VARIABEL WARNA DAN UKURAN
+
+   Variabel adalah tempat menyimpan nilai yang bisa digunakan
+   berkali-kali di bagian CSS lainnya.
+
+   Contohnya:
+   --primary menyimpan warna ungu utama.
+   Kalau warna ini diubah, bagian yang memakai variabel
+   tersebut juga akan ikut berubah.
+   ============================================================ */
+
+:root {
+
+    /* Warna ungu utama untuk tombol dan bagian penting */
+    --primary: #9275e8;
+
+    /* Warna ungu lebih gelap untuk efek tombol dan tulisan */
+    --primary-dark: #7658d2;
+
+    /* Warna ungu muda untuk latar menu aktif */
+    --primary-light: #e9e1ff;
+
+
+    /* Warna latar belakang halaman */
+    --background: #f8f6ff;
+
+    /* Warna putih untuk kartu dan panel */
+    --white: #ffffff;
+
+
+    /* Warna tulisan utama */
+    --text-dark: #302747;
+
+    /* Warna tulisan tambahan atau keterangan */
+    --text-muted: #817993;
+
+
+    /* Warna pastel pink */
+    --pink: #ffe2f0;
+
+    /* Warna pastel biru */
+    --blue: #e1edff;
+
+    /* Warna pastel hijau */
+    --green: #e0f6e9;
+
+    /* Warna pastel kuning */
+    --yellow: #fff2d6;
+
+    /* Warna pastel merah */
+    --red: #ffe3e7;
+
+
+    /* Warna untuk menunjukkan kondisi berhasil */
+    --success: #55b985;
+
+    /* Warna untuk menunjukkan kondisi gagal atau bahaya */
+    --danger: #e47791;
+
+    /* Warna untuk menunjukkan peringatan */
+    --warning: #eab85f;
+
+
+    /* Mengatur bayangan lembut di bawah kartu */
+    --shadow: 0 10px 30px rgba(137, 111, 205, 0.13);
+
+
+    /* Mengatur lengkungan sudut elemen berukuran kecil */
+    --radius-small: 10px;
+
+    /* Mengatur lengkungan sudut elemen berukuran sedang */
+    --radius-medium: 16px;
+
+    /* Mengatur lengkungan sudut elemen berukuran besar */
+    --radius-large: 22px;
+
+
+    /* Mengatur lebar sidebar di sebelah kiri */
+    --sidebar-width: 260px;
+
+}
+
+
+/* ============================================================
+   3. BODY
+
+   Bagian ini mengatur tampilan dasar seluruh halaman.
+   ============================================================ */
+
+body {
+    /* Mengatur jenis huruf yang digunakan website */
+    font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+
+    /* Menggunakan warna latar dari variabel background */
+    background-color: var(--background);
+
+    /* Menggunakan warna tulisan utama */
+    color: var(--text-dark);
+
+    /* Mengatur jarak antarbaris tulisan */
+    line-height: 1.6;
+
+    /* Membuat tinggi halaman minimal memenuhi layar */
+    min-height: 100vh;
+}
+
+
+/* ============================================================
+   4. LAYOUT UTAMA
+
+   Mengatur posisi sidebar dan konten utama
+   agar berada berdampingan.
+   ============================================================ */
+
+.app-layout {
+    display: flex;          /* Menyusun sidebar dan konten secara horizontal */
+    width: 100%;            /* Menggunakan seluruh lebar layar */
+    min-height: 100vh;      /* Tinggi minimal memenuhi layar */
+}
+
+
+/* ============================================================
+   5. SIDEBAR
+
+   Sidebar adalah panel menu yang berada di sebelah kiri.
+   ============================================================ */
+
+.sidebar {
+    width: var(--sidebar-width);         /* Mengatur lebar sidebar */
+    min-width: var(--sidebar-width);     /* Menjaga lebar agar tidak mengecil */
+    height: 100vh;                       /* Tinggi sidebar memenuhi layar */
+
+    position: sticky;                    /* Sidebar tetap berada di posisi atas */
+    top: 0;                              /* Jarak dari bagian atas layar */
+
+    display: flex;                       /* Mengaktifkan susunan fleksibel */
+    flex-direction: column;              /* Menyusun isi sidebar dari atas ke bawah */
+
+    background-color: var(--white);      /* Memberikan latar putih */
+    padding: 28px 20px 20px;             /* Mengatur jarak isi dari tepi sidebar */
+
+    border-right: 1px solid #eee9fa;     /* Memberikan garis pemisah di kanan */
+    box-shadow: 4px 0 20px rgba(120, 105, 170, 0.04); /* Memberikan bayangan */
+
+    z-index: 100;                        /* Menentukan posisi sidebar di depan elemen tertentu */
+}
+
+
+/* ============================================================
+   6. SIDEBAR LOGO
+
+   Mengatur tulisan Focus Flow di bagian atas sidebar.
+   ============================================================ */
+
+.sidebar-logo {
+    padding: 0 10px 30px;               /* Mengatur jarak logo */
+    border-bottom: 1px solid #f0ecf8;   /* Garis pemisah di bawah logo */
+}
+
+
+/* Mengatur nama aplikasi */
+
+.sidebar-logo h2 {
+    font-size: 24px;                    /* Ukuran tulisan nama aplikasi */
+    font-weight: 700;                   /* Membuat tulisan tebal */
+    color: var(--primary);              /* Menggunakan warna ungu utama */
+    letter-spacing: 0.3px;              /* Mengatur jarak antarhuruf */
+}
+
+
+/* Mengatur deskripsi logo */
+
+.sidebar-logo p {
+    font-size: 11px;                    /* Ukuran tulisan deskripsi */
+    color: var(--text-muted);           /* Warna tulisan tambahan */
+    margin-top: 3px;                    /* Jarak dari nama aplikasi */
+    letter-spacing: 0.5px;              /* Jarak antarhuruf */
+}
+
+
+/* ============================================================
+   7. KELOMPOK MENU SIDEBAR
+
+   Mengatur jarak antara menu utama dan menu pengaturan.
+   ============================================================ */
+
+.sidebar-menu {
+    margin-top: 28px;                   /* Jarak menu dari logo */
+}
+
+
+/* Mengatur jarak kelompok menu pengaturan */
+
+.settings-menu {
+    margin-top: 30px;                   /* Jarak menu pengaturan dari menu sebelumnya */
+}
+
+
+/* ============================================================
+   8. JUDUL KELOMPOK MENU
+
+   Contohnya MENU UTAMA dan PENGATURAN.
+   ============================================================ */
+
+.sidebar-heading {
+    font-size: 10px;                    /* Ukuran tulisan judul kelompok */
+    font-weight: 700;                   /* Membuat tulisan tebal */
+    color: #aaa2bc;                     /* Warna abu-abu keunguan */
+    letter-spacing: 1.2px;              /* Jarak antarhuruf */
+    padding: 0 12px;                    /* Jarak dari sisi kiri dan kanan */
+    margin-bottom: 13px;                /* Jarak dari daftar menu */
+}
+
+
+/* ============================================================
+   9. SIDEBAR NAVIGATION
+
+   Mengatur susunan seluruh menu navigasi.
+   ============================================================ */
+
+.sidebar-nav {
+    display: flex;                      /* Menyusun menu menggunakan flexbox */
+    flex-direction: column;             /* Menyusun menu dari atas ke bawah */
+    gap: 7px;                            /* Jarak antara satu menu dan menu lainnya */
+}
+
+
+/* ============================================================
+   10. SIDEBAR LINK
+
+   Mengatur tampilan setiap pilihan menu.
+   ============================================================ */
+
+.sidebar-link {
+    display: flex;                      /* Menyusun ikon dan tulisan berdampingan */
+    align-items: center;                /* Membuat ikon dan tulisan sejajar */
+    gap: 13px;                           /* Jarak antara ikon dan tulisan */
+
+    width: 100%;                         /* Lebar menu memenuhi area sidebar */
+    padding: 12px 13px;                 /* Jarak isi menu dari tepinya */
+
+    border-radius: var(--radius-small); /* Membuat sudut menu membulat */
+
+    color: var(--text-muted);           /* Warna tulisan menu */
+    text-decoration: none;              /* Menghilangkan garis bawah link */
+
+    font-size: 13px;                    /* Ukuran tulisan menu */
+    font-weight: 500;                   /* Ketebalan tulisan menu */
+
+    border: none;                       /* Menghilangkan garis tepi */
+    background: transparent;            /* Membuat latar transparan */
+
+    font-family: inherit;               /* Menggunakan jenis huruf dari halaman */
+    cursor: pointer;                    /* Mengubah kursor menjadi tangan */
+
+    transition: all 0.3s ease;          /* Membuat perubahan tampilan lebih halus */
+}
+
+
+/* ============================================================
+   11. MENU AKTIF
+
+   Memberikan tanda pada menu yang sedang dibuka.
+   Contohnya, menu Dashboard akan berwarna ungu muda
+   ketika pengguna berada di halaman Dashboard.
+   ============================================================ */
+
+.sidebar-link.active {
+    background-color: var(--primary-light); /* Latar menu aktif */
+    color: var(--primary-dark);              /* Warna tulisan menu aktif */
+    font-weight: 600;                        /* Membuat tulisan lebih tebal */
+    box-shadow: inset 3px 0 0 var(--primary); /* Garis ungu di sisi kiri */
+}
+
+
+/* Efek ketika kursor diarahkan ke menu yang belum aktif */
+
+.sidebar-link:hover:not(.active):not(.disabled) {
+    background-color: #f7f4ff;           /* Mengubah latar menjadi ungu sangat muda */
+    color: var(--primary-dark);          /* Mengubah warna tulisan */
+    transform: translateX(3px);          /* Menggeser menu sedikit ke kanan */
+}
+
+
+/* ============================================================
+   12. IKON MENU
+
+   Mengatur ukuran dan posisi ikon pada menu.
+   ============================================================ */
+
+.menu-icon {
+    width: 22px;                         /* Lebar area ikon */
+    min-width: 22px;                     /* Menjaga lebar ikon tetap sama */
+
+    display: inline-flex;                /* Mengatur ikon menggunakan flexbox */
+    align-items: center;                 /* Menempatkan ikon di tengah secara vertikal */
+    justify-content: center;             /* Menempatkan ikon di tengah secara horizontal */
+
+    font-size: 19px;                     /* Ukuran ikon */
+    line-height: 1;                      /* Mengatur tinggi baris ikon */
+}
+
+
+/* ============================================================
+   13. MENU YANG BELUM AKTIF
+
+   Mengatur menu yang fiturnya belum tersedia.
+   ============================================================ */
+
+.sidebar-link.disabled {
+    opacity: 0.45;                       /* Membuat menu terlihat lebih pudar */
+    cursor: not-allowed;                 /* Menampilkan tanda bahwa menu tidak bisa dipilih */
+    pointer-events: none;                /* Menonaktifkan klik pada menu */
+}
+
+
+/* ============================================================
+   14. BAGIAN BAWAH SIDEBAR
+
+   Mengatur posisi profil dan tombol Logout.
+   ============================================================ */
+
+.sidebar-bottom {
+    margin-top: auto;                    /* Mendorong bagian ini ke bawah sidebar */
+    padding-top: 20px;                   /* Jarak dari bagian atas */
+    border-top: 1px solid #f0ecf8;       /* Garis pemisah di bagian atas */
+}
+
+
+/* ============================================================
+   15. PROFIL SIDEBAR
+
+   Mengatur tampilan informasi akun pengguna.
+   ============================================================ */
+
+.sidebar-profile {
+    display: flex;                       /* Menyusun avatar dan informasi berdampingan */
+    align-items: center;                 /* Membuat avatar dan tulisan sejajar */
+    gap: 12px;                           /* Jarak antara avatar dan informasi */
+    padding: 10px 5px 18px;             /* Jarak isi profil dari tepinya */
+}
+
+
+/* Mengatur lingkaran avatar pengguna */
+
+.profile-avatar {
+    width: 42px;                         /* Lebar avatar */
+    height: 42px;                        /* Tinggi avatar */
+    min-width: 42px;                     /* Menjaga ukuran avatar */
+
+    display: flex;                       /* Mengaktifkan susunan fleksibel */
+    justify-content: center;             /* Menempatkan isi avatar di tengah secara horizontal */
+    align-items: center;                 /* Menempatkan isi avatar di tengah secara vertikal */
+
+    background: linear-gradient(
+        135deg,
+        #e9e1ff,
+        #f8dff0
+    );                                   /* Memberikan gradasi ungu dan pink */
+
+    color: var(--primary-dark);          /* Warna ikon atau tulisan avatar */
+    border-radius: 50%;                  /* Membuat bentuk avatar menjadi lingkaran */
+    font-size: 22px;                     /* Ukuran ikon avatar */
+}
+
+
+/* Mengatur nama pengguna */
+
+.profile-info h4 {
+    font-size: 12px;                     /* Ukuran nama pengguna */
+    font-weight: 600;                    /* Membuat nama sedikit tebal */
+    color: var(--text-dark);             /* Warna nama pengguna */
+}
+
+
+/* Mengatur keterangan akun */
+
+.profile-info p {
+    font-size: 10px;                     /* Ukuran tulisan keterangan */
+    color: var(--text-muted);            /* Warna tulisan keterangan */
+}
+
+
+/* ============================================================
+   16. TOMBOL LOGOUT
+
+   ID logout-btn digunakan oleh script.js untuk menemukan
+   tombol Logout ketika pengguna ingin keluar dari akun.
+   ============================================================ */
+
+#logout-btn {
+    display: flex;                       /* Menyusun ikon dan tulisan tombol */
+    align-items: center;                 /* Membuat isi tombol sejajar */
+    gap: 13px;                           /* Jarak ikon dan tulisan */
+
+    width: 100%;                         /* Lebar tombol memenuhi sidebar */
+    padding: 12px 13px;                 /* Jarak isi tombol dari tepinya */
+
+    border: none;                        /* Menghilangkan garis tepi */
+    border-radius: var(--radius-small);  /* Membuat sudut tombol membulat */
+
+    background-color: #fff0f3;           /* Latar tombol berwarna pink muda */
+    color: var(--danger);                /* Warna tulisan tombol */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 13px;                     /* Ukuran tulisan tombol */
+    font-weight: 600;                    /* Membuat tulisan lebih tebal */
+
+    cursor: pointer;                     /* Menampilkan kursor tangan */
+    transition: 0.3s ease;              /* Membuat perubahan tampilan lebih halus */
+}
+
+
+/* Efek ketika kursor diarahkan ke tombol Logout */
+
+#logout-btn:hover {
+    background-color: var(--danger);     /* Mengubah latar menjadi merah muda */
+    color: var(--white);                 /* Mengubah tulisan menjadi putih */
+}
+
+
+/* ============================================================
+   17. KONTEN UTAMA
+
+   Mengatur area di sebelah kanan sidebar.
+   ============================================================ */
+
+.main-content {
+    flex: 1;                             /* Menggunakan sisa ruang setelah sidebar */
+    min-width: 0;                        /* Mencegah konten melebar secara berlebihan */
+
+    width: calc(100% - var(--sidebar-width)); /* Menghitung lebar setelah dikurangi sidebar */
+
+    padding: 30px 35px 50px;            /* Jarak konten dari tepi halaman */
+}
+
+
+/* ============================================================
+   18. HEADER DASHBOARD
+
+   Mengatur judul halaman di bagian atas konten.
+   ============================================================ */
+
+.content-header {
+    display: flex;                       /* Menyusun isi header secara horizontal */
+    align-items: center;                 /* Membuat isi header sejajar */
+    justify-content: space-between;      /* Memberi jarak antara bagian kiri dan kanan */
+    margin-bottom: 28px;                 /* Jarak header dengan bagian di bawahnya */
+}
+
+
+/* Mengatur tulisan kecil di atas judul */
+
+.header-subtitle {
+    font-size: 10px;                     /* Ukuran tulisan kecil */
+    font-weight: 600;                    /* Membuat tulisan lebih tebal */
+    color: var(--primary);               /* Warna ungu utama */
+    letter-spacing: 1.3px;               /* Jarak antarhuruf */
+    margin-bottom: 5px;                  /* Jarak dengan judul */
+}
+
+
+/* Mengatur judul Dashboard */
+
+.content-header h1 {
+    font-size: 27px;                     /* Ukuran judul */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+}
+
+
+/* ============================================================
+   19. DASHBOARD CONTAINER
+
+   Mengatur lebar dan jarak seluruh isi Dashboard.
+   ============================================================ */
+
+.dashboard-container {
+    width: 100%;                         /* Menggunakan seluruh lebar yang tersedia */
+    max-width: 1250px;                   /* Membatasi lebar maksimal konten */
+    margin: 0 auto;                      /* Menempatkan konten di tengah */
+    padding: 0 0 20px;                  /* Memberikan jarak di bagian bawah */
+}
+
+
+/* ============================================================
+   20. WELCOME SECTION
+
+   Mengatur kartu sambutan pengguna.
+   ============================================================ */
+
+.welcome-section {
+    background: linear-gradient(
+        135deg,
+        #e4d9ff,
+        #f8dff0,
+        #e4efff
+    );                                   /* Membuat latar gradasi ungu, pink, dan biru */
+
+    padding: 35px;                       /* Jarak isi kartu dari tepinya */
+    border-radius: var(--radius-large);  /* Membuat sudut kartu membulat */
+    margin-bottom: 30px;                 /* Jarak kartu dengan bagian berikutnya */
+    box-shadow: var(--shadow);           /* Memberikan bayangan pada kartu */
+}
+
+
+/* Mengatur judul sambutan */
+
+.welcome-section h1 {
+    font-size: 30px;                     /* Ukuran judul sambutan */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 10px;                 /* Jarak judul dengan deskripsi */
+}
+
+
+/* Mengatur deskripsi sambutan */
+
+.welcome-section p {
+    font-size: 14px;                     /* Ukuran tulisan deskripsi */
+    color: var(--text-muted);            /* Warna tulisan deskripsi */
+}
+
+
+/* ============================================================
+   21. STATISTICS SECTION
+
+   Mengatur tiga kartu statistik:
+   - Total Tasks
+   - Completed Tasks
+   - Pending Tasks
+   ============================================================ */
+
+.stats-section {
+    display: grid;                       /* Menyusun kartu menggunakan grid */
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Membuat tiga kolom sama lebar */
+    gap: 22px;                           /* Jarak antara kartu */
+    margin-bottom: 35px;                 /* Jarak dengan bagian berikutnya */
+}
+
+
+/* Mengatur bentuk umum kartu statistik */
+
+.stats-card {
+    background-color: var(--white);      /* Memberikan latar putih */
+    padding: 25px;                       /* Jarak isi kartu dari tepi */
+    border-radius: var(--radius-large);  /* Membuat sudut kartu membulat */
+    box-shadow: var(--shadow);           /* Memberikan bayangan */
+    transition: transform 0.3s ease;     /* Membuat gerakan kartu lebih halus */
+}
+
+
+/* Kartu statistik pertama: Total Tasks */
+
+.stats-card:nth-child(1) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #eee8ff
+    );                                   /* Gradasi putih dan ungu muda */
+}
+
+
+/* Kartu statistik kedua: Completed */
+
+.stats-card:nth-child(2) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #e3f8ec
+    );                                   /* Gradasi putih dan hijau muda */
+}
+
+
+/* Kartu statistik ketiga: Pending */
+
+.stats-card:nth-child(3) {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #fff0f6
+    );                                   /* Gradasi putih dan pink muda */
+}
+
+
+/* Efek ketika kursor diarahkan ke kartu statistik */
+
+.stats-card:hover {
+    transform: translateY(-5px);         /* Mengangkat kartu sedikit ke atas */
+}
+
+
+/* Mengatur judul statistik */
+
+.stats-card h3 {
+    font-size: 14px;                     /* Ukuran judul kartu */
+    color: var(--text-muted);            /* Warna judul */
+    font-weight: 500;                    /* Ketebalan tulisan */
+    margin-bottom: 12px;                 /* Jarak dengan angka statistik */
+}
+
+
+/* Mengatur angka statistik */
+
+.stats-card p {
+    font-size: 34px;                     /* Ukuran angka statistik */
+    font-weight: 700;                    /* Membuat angka tebal */
+    color: var(--primary);               /* Warna angka ungu */
+    line-height: 1.3;                    /* Mengatur tinggi baris angka */
+}
+
+
+/* ============================================================
+   22. MY TASKS SECTION
+
+   Mengatur susunan bagian My Tasks.
+
+   Bagian ini terdiri dari:
+   - Judul My Tasks.
+   - Pencarian dan filter.
+   - Form tambah tugas.
+   - Daftar tugas.
+   ============================================================ */
+
+.tasks-section {
+    display: grid;                       /* Menggunakan CSS Grid untuk menyusun bagian */
+
+    grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(0, 1.5fr);               /* Membuat kolom form dan daftar tugas */
+
+    grid-template-areas:
+        "header header"
+        "tools tools"
+        "form list";                     /* Menentukan posisi setiap bagian */
+
+    gap: 24px;                           /* Jarak antarbagian */
+    align-items: start;                  /* Membuat isi bagian dimulai dari atas */
+    margin-top: 35px;                    /* Jarak dari bagian sebelumnya */
+}
+
+
+/* Mengatur header My Tasks */
+
+.section-header {
+    grid-area: header;                   /* Menempatkan header pada area header */
+    margin-bottom: 0;                    /* Menghilangkan jarak bawah tambahan */
+}
+
+
+/* Mengatur judul My Tasks */
+
+.section-header h2 {
+    font-size: 25px;                     /* Ukuran judul */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 8px;                  /* Jarak dengan deskripsi */
+}
+
+
+/* Mengatur deskripsi My Tasks */
+
+.section-header p {
+    font-size: 14px;                     /* Ukuran deskripsi */
+    color: var(--text-muted);            /* Warna deskripsi */
+}
+
+
+/* ============================================================
+   23. FORM TAMBAH TUGAS
+
+   Mengatur kartu tempat pengguna memasukkan tugas baru.
+   ============================================================ */
+
+.task-form-container {
+    grid-area: form;                     /* Menempatkan form pada area form */
+    background-color: var(--white);      /* Latar putih */
+    padding: 25px;                       /* Jarak isi form dari tepi */
+    border-radius: var(--radius-large);  /* Sudut form membulat */
+    box-shadow: var(--shadow);           /* Bayangan form */
+    width: 100%;                         /* Lebar form memenuhi area */
+    min-width: 0;                        /* Mencegah form melebar berlebihan */
+}
+
+
+/* Mengatur jarak kelompok form */
+
+.form-group {
+    margin-bottom: 5px;                  /* Jarak antar kelompok form */
+}
+
+
+/* Mengatur tulisan label pada form */
+
+.form-group label {
+    display: block;                      /* Membuat label berada pada baris sendiri */
+    font-size: 13px;                     /* Ukuran tulisan label */
+    font-weight: 600;                    /* Membuat label lebih tebal */
+    color: var(--text-dark);             /* Warna label */
+    margin-bottom: 8px;                  /* Jarak label dengan kolom input */
+}
+
+
+/* Mengatur kolom input form */
+
+.form-group input {
+    width: 100%;                         /* Lebar input memenuhi form */
+    padding: 13px 15px;                 /* Jarak tulisan dari tepi input */
+
+    border: 1px solid #e4def4;           /* Garis tepi input */
+    border-radius: var(--radius-small);  /* Sudut input membulat */
+
+    background-color: #fcfbff;           /* Latar input */
+    color: var(--text-dark);             /* Warna tulisan input */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 13px;                     /* Ukuran tulisan input */
+
+    outline: none;                       /* Menghilangkan garis fokus bawaan browser */
+    transition: 0.3s ease;              /* Membuat perubahan lebih halus */
+
+    margin-bottom: 18px;                 /* Jarak input dengan bagian berikutnya */
+}
+
+
+/* Efek ketika kolom input sedang dipilih */
+
+.form-group input:focus {
+    border-color: var(--primary);       /* Mengubah garis input menjadi ungu */
+    box-shadow: 0 0 0 3px rgba(155, 139, 216, 0.12); /* Memberikan bayangan lembut */
+}
+
+
+/* ============================================================
+   24. TOMBOL TAMBAH TUGAS
+
+   Mengatur tampilan tombol untuk mengirim tugas baru.
+   ============================================================ */
+
+.add-task-btn {
+    width: 100%;                         /* Lebar tombol memenuhi form */
+    padding: 13px 18px;                /* Jarak isi tombol dari tepi */
+
+    border: none;                        /* Menghilangkan garis tepi */
+    border-radius: var(--radius-small);  /* Sudut tombol membulat */
+
+    background-color: var(--primary);    /* Latar tombol ungu */
+    color: var(--white);                 /* Tulisan tombol putih */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 13px;                     /* Ukuran tulisan tombol */
+    font-weight: 600;                    /* Membuat tulisan lebih tebal */
+
+    cursor: pointer;                     /* Kursor berubah menjadi tangan */
+    transition: 0.3s ease;              /* Membuat efek tombol lebih halus */
+}
+
+
+/* Efek ketika kursor diarahkan ke tombol tambah tugas */
+
+.add-task-btn:hover {
+    background-color: var(--primary-dark); /* Menggelapkan warna tombol */
+    transform: translateY(-2px);           /* Mengangkat tombol sedikit */
+}
+
+
+/* ============================================================
+   25. TASK TOOLS
+
+   Mengatur bagian pencarian dan filter tugas.
+   ============================================================ */
+
+.task-tools {
+    grid-area: tools;                    /* Menempatkan pencarian dan filter pada area tools */
+    display: grid;                       /* Menyusun pencarian dan filter menggunakan grid */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Membuat dua kolom */
+    gap: 18px;                           /* Jarak pencarian dan filter */
+    width: 100%;                         /* Menggunakan seluruh lebar area */
+}
+
+
+/* Mengatur kelompok pencarian dan filter */
+
+.task-tool-group {
+    display: flex;                       /* Menyusun label dan kolom secara fleksibel */
+    flex-direction: column;             /* Menyusun label di atas kolom */
+    gap: 8px;                            /* Jarak label dan kolom */
+    min-width: 0;                        /* Mencegah kolom melebar berlebihan */
+}
+
+
+/* Mengatur label pencarian dan filter */
+
+.task-tool-group label {
+    font-size: 13px;                     /* Ukuran tulisan label */
+    font-weight: 600;                    /* Ketebalan tulisan label */
+    color: var(--text-dark);             /* Warna tulisan label */
+}
+
+
+/* Mengatur kolom pencarian */
+
+.task-tool-input {
+    width: 100%;                         /* Lebar kolom memenuhi area */
+    padding: 12px 15px;                 /* Jarak tulisan dari tepi kolom */
+
+    border: 1px solid #e4def4;           /* Garis tepi kolom */
+    border-radius: var(--radius-small);  /* Sudut kolom membulat */
+
+    background-color: var(--white);      /* Latar kolom putih */
+    color: var(--text-dark);             /* Warna tulisan */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 13px;                     /* Ukuran tulisan */
+
+    outline: none;                       /* Menghilangkan garis fokus bawaan */
+}
+
+
+/* Efek ketika kolom pencarian dipilih */
+
+.task-tool-input:focus {
+    border-color: var(--primary);       /* Mengubah garis menjadi ungu */
+    box-shadow: 0 0 0 3px rgba(155, 139, 216, 0.12); /* Bayangan lembut */
+}
+
+
+/* Mengatur pilihan filter tugas */
+
+.task-tool-select {
+    width: 100%;                         /* Lebar pilihan memenuhi area */
+    padding: 12px 15px;                 /* Jarak tulisan dari tepi */
+
+    border: 1px solid #e4def4;           /* Garis tepi pilihan */
+    border-radius: var(--radius-small);  /* Sudut pilihan membulat */
+
+    background-color: var(--white);      /* Latar putih */
+    color: var(--text-dark);             /* Warna tulisan */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 13px;                     /* Ukuran tulisan */
+
+    cursor: pointer;                     /* Kursor tangan */
+    outline: none;                       /* Menghilangkan garis fokus bawaan */
+}
+
+
+/* Efek ketika pilihan filter dipilih */
+
+.task-tool-select:focus {
+    border-color: var(--primary);       /* Mengubah garis menjadi ungu */
+}
+
+
+/* ============================================================
+   26. TASK LIST CONTAINER
+
+   Mengatur kartu yang menampung daftar tugas.
+   ============================================================ */
+
+.task-list-container {
+    grid-area: list;                     /* Menempatkan daftar tugas pada area list */
+    background-color: var(--white);      /* Latar kartu putih */
+    padding: 25px;                       /* Jarak isi kartu dari tepi */
+    border-radius: var(--radius-large);  /* Sudut kartu membulat */
+    box-shadow: var(--shadow);           /* Bayangan kartu */
+    min-width: 0;                        /* Mencegah isi melebar berlebihan */
+    width: 100%;                         /* Lebar kartu memenuhi area */
+}
+
+
+/* Mengatur judul daftar tugas */
+
+.task-list-container h3 {
+    font-size: 19px;                     /* Ukuran judul */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 20px;                 /* Jarak dengan daftar tugas */
+}
+
+
+/* Mengatur susunan daftar tugas */
+
+#task-list {
+    display: flex;                       /* Menyusun tugas secara fleksibel */
+    flex-direction: column;             /* Menyusun tugas dari atas ke bawah */
+    gap: 15px;                           /* Jarak antara tugas */
+    min-width: 0;                        /* Mencegah daftar melebar berlebihan */
+}
+
+
+/* ============================================================
+   27. TASK ITEM
+
+   Mengatur tampilan setiap kartu tugas yang dibuat
+   oleh file tasks.js.
+   ============================================================ */
+
+.task-item {
+    background-color: #fcfbff;           /* Latar kartu tugas */
+    border: 1px solid #eee9fa;            /* Garis tepi kartu */
+    border-radius: var(--radius-medium); /* Sudut kartu membulat */
+    padding: 18px;                       /* Jarak isi kartu dari tepi */
+
+    display: flex;                       /* Menyusun isi kartu secara fleksibel */
+    justify-content: space-between;      /* Memberi jarak antara tulisan dan tombol */
+    align-items: center;                 /* Membuat isi kartu sejajar */
+
+    gap: 15px;                           /* Jarak antara isi kartu */
+    flex-wrap: wrap;                     /* Memindahkan isi ke baris berikutnya jika sempit */
+
+    transition: 0.3s ease;              /* Membuat perubahan kartu lebih halus */
+}
+
+
+/* Efek ketika kursor diarahkan ke kartu tugas */
+
+.task-item:hover {
+    border-color: #d7ccf5;               /* Mengubah warna garis kartu */
+    background-color: #faf8ff;           /* Mengubah warna latar kartu */
+}
+
+
+/* Mengatur tulisan tugas */
+
+.task-item span {
+    color: var(--text-dark);             /* Warna tulisan tugas */
+    font-size: 13px;                     /* Ukuran tulisan tugas */
+    overflow-wrap: anywhere;             /* Memindahkan tulisan panjang agar tidak keluar kartu */
+}
+
+
+/* Mengatur kartu tugas yang sudah selesai */
+
+.task-item.completed {
+    opacity: 0.75;                       /* Membuat kartu sedikit lebih pudar */
+    background-color: #f2fbf5;           /* Memberikan latar hijau muda */
+}
+
+
+/* Mengatur tulisan tugas yang sudah selesai */
+
+.task-item.completed span {
+    text-decoration: line-through;       /* Memberikan garis pada tulisan tugas */
+    color: var(--text-muted);            /* Mengubah warna tulisan menjadi lebih pudar */
+}
+
+
+/* ============================================================
+   28. TOMBOL EDIT DAN DELETE
+
+   Mengatur tampilan tombol untuk mengedit dan menghapus tugas.
+   ============================================================ */
+
+.edit-btn,
+.delete-btn {
+    padding: 9px 14px;                   /* Jarak tulisan tombol dari tepi */
+
+    border: none;                        /* Menghilangkan garis tepi */
+    border-radius: 8px;                  /* Membuat sudut tombol membulat */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 11px;                     /* Ukuran tulisan tombol */
+    font-weight: 600;                    /* Membuat tulisan tebal */
+
+    cursor: pointer;                     /* Kursor tangan */
+    transition: 0.3s ease;              /* Membuat perubahan tombol lebih halus */
+}
+
+
+/* Mengatur tombol edit */
+
+.edit-btn {
+    background-color: var(--primary-light); /* Latar ungu muda */
+    color: var(--primary-dark);             /* Tulisan ungu gelap */
+}
+
+
+/* Efek ketika kursor diarahkan ke tombol edit */
+
+.edit-btn:hover {
+    background-color: var(--primary);    /* Mengubah latar menjadi ungu */
+    color: var(--white);                 /* Mengubah tulisan menjadi putih */
+}
+
+
+/* Mengatur tombol delete */
+
+.delete-btn {
+    background-color: var(--red);        /* Latar merah muda */
+    color: var(--danger);                /* Tulisan merah */
+}
+
+
+/* Efek ketika kursor diarahkan ke tombol delete */
+
+.delete-btn:hover {
+    background-color: var(--danger);     /* Mengubah latar menjadi merah */
+    color: var(--white);                 /* Mengubah tulisan menjadi putih */
+}
+
+
+/* ============================================================
+   29. EDIT TASK FORM
+
+   Mengatur tampilan form ketika pengguna sedang mengedit tugas.
+   ============================================================ */
+
+.edit-form {
+    display: flex;                       /* Menyusun isi form secara fleksibel */
+    flex-direction: column;             /* Menyusun input dari atas ke bawah */
+    gap: 12px;                           /* Jarak antarinput */
+
+    width: 100%;                         /* Lebar form memenuhi area */
+    background-color: var(--white);      /* Latar form putih */
+
+    padding: 15px;                       /* Jarak isi form dari tepi */
+    border-radius: var(--radius-small);  /* Sudut form membulat */
+}
+
+
+/* Mengatur kolom input pada form edit */
+
+.edit-form input {
+    width: 100%;                         /* Lebar input memenuhi form */
+    padding: 11px 13px;                 /* Jarak tulisan dari tepi */
+
+    border: 1px solid #e4def4;           /* Garis tepi input */
+    border-radius: 8px;                  /* Sudut input membulat */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    outline: none;                       /* Menghilangkan garis fokus bawaan */
+}
+
+
+/* Efek ketika input edit dipilih */
+
+.edit-form input:focus {
+    border-color: var(--primary);       /* Mengubah garis input menjadi ungu */
+}
+
+
+/* ============================================================
+   30. POMODORO TIMER
+
+   Mengatur tampilan fitur pengatur waktu belajar.
+   ============================================================ */
+
+
+/* Mengatur jarak bagian Pomodoro */
+
+.pomodoro-section {
+    margin-top: 45px;                    /* Jarak Pomodoro dari bagian sebelumnya */
+}
+
+
+/* Mengatur jarak header timer */
+
+.pomodoro-header {
+    margin-bottom: 20px;                 /* Jarak header dengan kartu timer */
+}
+
+
+/* Mengatur judul Pomodoro */
+
+.pomodoro-header h2 {
+    font-size: 25px;                     /* Ukuran judul */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 8px;                  /* Jarak dengan deskripsi */
+}
+
+
+/* Mengatur deskripsi Pomodoro */
+
+.pomodoro-header p {
+    color: var(--text-muted);            /* Warna deskripsi */
+    font-size: 14px;                     /* Ukuran deskripsi */
+}
+
+
+/* Mengatur kartu utama timer */
+
+.pomodoro-card {
+    background: linear-gradient(
+        135deg,
+        #e6dcff,
+        #f9dff1,
+        #e2ecff
+    );                                   /* Latar gradasi ungu, pink, dan biru */
+
+    padding: 35px;                       /* Jarak isi kartu dari tepi */
+    border-radius: var(--radius-large);  /* Sudut kartu membulat */
+    box-shadow: var(--shadow);           /* Bayangan kartu */
+    text-align: center;                  /* Membuat isi kartu berada di tengah */
+}
+
+
+/* Mengatur tulisan mode timer */
+
+#timer-mode {
+    font-size: 15px;                     /* Ukuran tulisan mode */
+    font-weight: 600;                    /* Membuat tulisan lebih tebal */
+    color: var(--primary-dark);          /* Warna ungu gelap */
+    margin-bottom: 15px;                 /* Jarak dengan angka timer */
+}
+
+
+/* Mengatur angka waktu timer */
+
+#timer-display {
+    font-size: 65px;                     /* Ukuran angka timer */
+    font-weight: 700;                    /* Membuat angka tebal */
+    color: var(--text-dark);             /* Warna angka */
+
+    line-height: 1.3;                    /* Mengatur tinggi baris angka */
+    margin-bottom: 25px;                 /* Jarak angka dengan tombol */
+
+    font-variant-numeric: tabular-nums;  /* Menjaga lebar angka tetap stabil */
+}
+
+
+/* Mengatur semua tombol di dalam kartu Pomodoro */
+
+.pomodoro-card button {
+    padding: 12px 22px;                 /* Jarak tulisan tombol dari tepi */
+
+    border: none;                        /* Menghilangkan garis tepi */
+    border-radius: var(--radius-small);  /* Sudut tombol membulat */
+
+    margin: 5px;                         /* Jarak antar tombol */
+
+    font-family: inherit;                /* Menggunakan jenis huruf halaman */
+    font-size: 13px;                     /* Ukuran tulisan tombol */
+    font-weight: 600;                    /* Membuat tulisan lebih tebal */
+
+    cursor: pointer;                     /* Kursor tangan */
+    transition: 0.3s ease;              /* Membuat efek tombol lebih halus */
+}
+
+
+/* Mengatur tombol mulai timer */
+
+#start-timer {
+    background-color: var(--primary);    /* Latar tombol ungu */
+    color: var(--white);                 /* Tulisan putih */
+}
+
+
+/* Efek tombol mulai ketika kursor diarahkan */
+
+#start-timer:hover {
+    background-color: var(--primary-dark); /* Mengubah latar menjadi ungu gelap */
+    transform: translateY(-2px);           /* Mengangkat tombol sedikit */
+}
+
+
+/* Mengatur tombol jeda timer */
+
+#pause-timer {
+    background-color: var(--yellow);     /* Latar kuning muda */
+    color: #9a752e;                      /* Tulisan cokelat kekuningan */
+}
+
+
+/* Efek tombol jeda ketika kursor diarahkan */
+
+#pause-timer:hover {
+    background-color: var(--warning);    /* Mengubah latar menjadi kuning lebih gelap */
+    color: var(--white);                 /* Mengubah tulisan menjadi putih */
+}
+
+
+/* Mengatur tombol reset timer */
+
+#reset-timer {
+    background-color: var(--white);      /* Latar tombol putih */
+    color: var(--text-dark);             /* Warna tulisan */
+}
+
+
+/* Efek tombol reset ketika kursor diarahkan */
+
+#reset-timer:hover {
+    background-color: #eee9fa;           /* Mengubah latar menjadi ungu sangat muda */
+}
+
+
+/* ============================================================
+   31. STUDY HISTORY SECTION
+
+   Mengatur bagian riwayat belajar pengguna.
+   ============================================================ */
+
+.study-history-section {
+    margin-top: 45px;                    /* Jarak Study History dari bagian sebelumnya */
+}
+
+
+/* Mengatur jarak header Study History */
+
+.study-history-header {
+    margin-bottom: 22px;                 /* Jarak header dengan isi riwayat */
+}
+
+
+/* Mengatur judul Study History */
+
+.study-history-header h2 {
+    font-size: 25px;                     /* Ukuran judul */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 8px;                  /* Jarak judul dengan deskripsi */
+}
+
+
+/* Mengatur deskripsi Study History */
+
+.study-history-header p {
+    font-size: 14px;                     /* Ukuran deskripsi */
+    color: var(--text-muted);            /* Warna deskripsi */
+}
+
+
+/* ============================================================
+   32. STUDY SUMMARY
+
+   Mengatur dua kartu ringkasan produktivitas:
+   - Total sesi fokus.
+   - Total waktu fokus.
+   ============================================================ */
+
+.study-summary {
+    display: grid;                       /* Menyusun kartu menggunakan grid */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Membuat dua kolom sama lebar */
+    gap: 22px;                           /* Jarak antara kedua kartu */
+    margin-bottom: 25px;                 /* Jarak dengan grafik */
+}
+
+
+/* Mengatur bentuk kartu ringkasan */
+
+.study-summary-card {
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #f5f0ff
+    );                                   /* Latar gradasi putih dan ungu muda */
+
+    padding: 25px;                       /* Jarak isi kartu dari tepi */
+    border-radius: var(--radius-large);  /* Sudut kartu membulat */
+    box-shadow: var(--shadow);           /* Bayangan kartu */
+    border: 1px solid #f0eaff;           /* Garis tepi kartu */
+}
+
+
+/* Mengatur keterangan ringkasan */
+
+.study-summary-card p {
+    font-size: 13px;                     /* Ukuran tulisan keterangan */
+    color: var(--text-muted);            /* Warna tulisan */
+    margin-bottom: 12px;                 /* Jarak dengan angka ringkasan */
+}
+
+
+/* Mengatur angka ringkasan */
+
+.study-summary-card h3 {
+    font-size: 30px;                     /* Ukuran angka */
+    font-weight: 700;                    /* Membuat angka tebal */
+    color: var(--primary);               /* Warna angka ungu */
+    margin: 0;                           /* Menghilangkan jarak bawaan */
+}
+
+
+/* ============================================================
+   33. STUDY CHART SECTION
+
+   Mengatur kartu utama grafik produktivitas.
+   ============================================================ */
+
+.study-chart-section {
+    background: linear-gradient(
+        145deg,
+        #ffffff,
+        #fcfaff
+    );                                   /* Latar gradasi putih */
+
+    padding: 30px;                       /* Jarak isi kartu dari tepi */
+    border-radius: var(--radius-large);  /* Sudut kartu membulat */
+    box-shadow: var(--shadow);           /* Bayangan kartu */
+
+    margin-bottom: 30px;                 /* Jarak dengan bagian berikutnya */
+    width: 100%;                         /* Lebar kartu memenuhi area */
+    overflow: hidden;                    /* Menahan isi agar tidak keluar kartu */
+
+    border: 1px solid #f0eaff;           /* Garis tepi kartu */
+}
+
+
+/* Mengatur jarak header grafik */
+
+.study-chart-header {
+    margin-bottom: 20px;                 /* Jarak header dengan grafik */
+}
+
+
+/* Mengatur judul grafik */
+
+.study-chart-header h3 {
+    font-size: 21px;                     /* Ukuran judul grafik */
+    font-weight: 700;                    /* Membuat judul tebal */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 7px;                  /* Jarak dengan deskripsi */
+}
+
+
+/* Mengatur deskripsi grafik */
+
+.study-chart-header p {
+    font-size: 13px;                     /* Ukuran deskripsi */
+    color: var(--text-muted);            /* Warna deskripsi */
+}
+
+
+/* Mengatur pesan pada bagian grafik */
+
+#study-chart-message {
+    font-size: 13px;                     /* Ukuran tulisan pesan */
+    color: var(--text-muted);            /* Warna tulisan pesan */
+    margin-bottom: 20px;                 /* Jarak dengan grafik */
+    line-height: 1.7;                    /* Jarak antarbaris pesan */
+}
+
+
+/* ============================================================
+   34. AREA BATANG GRAFIK
+
+   Bagian ini menjadi tempat batang grafik selama tujuh hari.
+   Isi grafik dibuat oleh file study-chart.js.
+   ============================================================ */
+
+#study-chart-bars {
+    display: flex;                       /* Menyusun kolom grafik secara horizontal */
+    justify-content: space-around;       /* Memberi jarak yang merata antar kolom */
+    align-items: stretch;                /* Membuat kolom mengikuti tinggi area */
+
+    gap: 12px;                           /* Jarak antara kolom grafik */
+
+    min-height: 260px;                   /* Tinggi minimal area grafik */
+    width: 100%;                         /* Lebar area grafik memenuhi kartu */
+
+    padding: 15px 5px 10px;             /* Jarak isi grafik dari tepi */
+    border-radius: 16px;                 /* Sudut area grafik membulat */
+
+    /* Membuat garis bantu horizontal pada area grafik */
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 49px,
+        #eee8fa 50px
+    );
+}
+
+
+/* ============================================================
+   35. KOLOM GRAFIK
+
+   Setiap kolom mewakili satu hari pada grafik.
+   ============================================================ */
+
+.study-chart-column {
+    flex: 1;                             /* Membagi ruang secara merata */
+    display: flex;                       /* Menyusun isi kolom */
+    flex-direction: column;             /* Menyusun isi dari atas ke bawah */
+
+    justify-content: flex-end;           /* Menempatkan batang di bagian bawah */
+    align-items: center;                 /* Menempatkan isi di tengah */
+
+    min-width: 0;                        /* Mencegah kolom melebar */
+    height: 230px;                       /* Mengatur tinggi kolom */
+
+    gap: 12px;                           /* Jarak angka, batang, dan label */
+}
+
+
+/* ============================================================
+   36. AREA BATANG GRAFIK
+
+   Menyusun angka menit dan batang secara vertikal.
+   ============================================================ */
+
+.study-chart-bar-area {
+    flex: 1;                             /* Menggunakan ruang yang tersedia */
+    display: flex;                       /* Mengaktifkan susunan fleksibel */
+    flex-direction: column;             /* Menyusun angka dan batang dari atas ke bawah */
+
+    justify-content: flex-end;           /* Menempatkan batang di bagian bawah */
+    align-items: center;                 /* Menempatkan isi di tengah */
+
+    width: 100%;                         /* Lebar area memenuhi kolom */
+    min-height: 0;                       /* Mengizinkan area menyesuaikan tinggi */
+
+    position: relative;                  /* Menjadi patokan posisi elemen di dalamnya */
+}
+
+
+/* ============================================================
+   37. ANGKA GRAFIK
+
+   Menampilkan jumlah menit fokus di atas batang.
+   ============================================================ */
+
+.study-chart-value {
+    font-size: 12px;                     /* Ukuran angka menit */
+    font-weight: 700;                    /* Membuat angka tebal */
+    color: #8065d1;                      /* Warna angka ungu */
+
+    margin-bottom: 8px;                  /* Jarak angka dengan batang */
+    white-space: nowrap;                 /* Mencegah angka turun ke baris baru */
+}
+
+
+/* ============================================================
+   38. BATANG GRAFIK
+
+   Mengatur bentuk dan warna batang grafik.
+   Tinggi batang tetap diatur oleh study-chart.js.
+   ============================================================ */
+
+.study-chart-bar {
+    width: 65%;                          /* Lebar batang dibanding kolom */
+    min-height: 5px;                     /* Tinggi minimal batang */
+
+    background: linear-gradient(
+        180deg,
+        #c5aaff 0%,
+        #a58af0 45%,
+        #9275e8 100%
+    );                                   /* Gradasi warna ungu pada batang */
+
+    border-radius: 12px 12px 5px 5px;   /* Membulatkan sudut bagian atas batang */
+
+    box-shadow: 0 5px 12px rgba(146, 117, 232, 0.20); /* Bayangan batang */
+
+    transition:
+        height 0.5s ease,                /* Menghaluskan perubahan tinggi batang */
+        background 0.3s ease,            /* Menghaluskan perubahan warna batang */
+        transform 0.3s ease;             /* Menghaluskan gerakan batang */
+}
+
+
+/* Efek ketika kursor diarahkan ke batang grafik */
+
+.study-chart-bar:hover {
+    background: linear-gradient(
+        180deg,
+        #f4b8df 0%,
+        #c39af5 50%,
+        #9275e8 100%
+    );                                   /* Mengubah gradasi menjadi pink dan ungu */
+
+    transform: scaleX(1.08);             /* Memperlebar batang sedikit */
+}
+
+
+/* ============================================================
+   39. LABEL HARI GRAFIK
+
+   Mengatur tulisan nama hari di bawah setiap batang.
+   ============================================================ */
+
+.study-chart-label {
+    font-size: 11px;                     /* Ukuran tulisan nama hari */
+    font-weight: 600;                    /* Membuat tulisan lebih tebal */
+    color: #817993;                      /* Warna tulisan */
+
+    background-color: #f1ecff;           /* Latar ungu muda */
+    padding: 6px 10px;                  /* Jarak tulisan dari tepi label */
+
+    border-radius: 20px;                 /* Membuat label berbentuk kapsul */
+    white-space: nowrap;                 /* Mencegah nama hari turun baris */
+    text-align: center;                  /* Membuat tulisan berada di tengah */
+
+    transition: 0.3s ease;              /* Menghaluskan perubahan label */
+}
+
+
+/* Efek ketika kursor diarahkan ke label hari */
+
+.study-chart-label:hover {
+    background-color: #e3d8ff;           /* Mengubah latar menjadi ungu lebih jelas */
+    color: #7658d2;                      /* Mengubah tulisan menjadi ungu gelap */
+}
+
+
+/* ============================================================
+   40. STUDY HISTORY LIST
+
+   Mengatur kartu yang menampung daftar riwayat belajar.
+   ============================================================ */
+
+.study-history-container {
+    background-color: var(--white);      /* Latar kartu putih */
+    padding: 25px;                       /* Jarak isi dari tepi kartu */
+    border-radius: var(--radius-large);  /* Sudut kartu membulat */
+    box-shadow: var(--shadow);           /* Bayangan kartu */
+
+    border: 1px solid #f0eaff;           /* Garis tepi kartu */
+    margin-top: 18px;                    /* Jarak dari bagian sebelumnya */
+}
+
+
+/* Mengatur judul daftar riwayat */
+
+.study-history-container h3 {
+    font-size: 19px;                     /* Ukuran judul */
+    color: var(--text-dark);             /* Warna judul */
+    margin-bottom: 18px;                 /* Jarak judul dengan daftar */
+}
+
+
+/* ============================================================
+   41. STUDY HISTORY ITEM
+
+   Mengatur setiap catatan sesi belajar yang ditampilkan
+   oleh study-history.js.
+   ============================================================ */
+
+.study-history-item {
+    display: flex;                       /* Menyusun informasi riwayat secara horizontal */
+
+    justify-content: space-between;      /* Memberi jarak antara informasi */
+    align-items: center;                 /* Membuat informasi sejajar */
+
+    gap: 15px;                           /* Jarak antara isi riwayat */
+    padding: 15px 0;                    /* Jarak isi dari atas dan bawah */
+
+    border-bottom: 1px solid #eee9fa;   /* Garis pemisah antarriwayat */
+}
+
+
+/* Menghilangkan garis pada riwayat terakhir */
+
+.study-history-item:last-child {
+    border-bottom: none;                 /* Menghapus garis bawah item terakhir */
+}
+
+
+/* Mengatur tulisan riwayat */
+
+.study-history-item p {
+    font-size: 13px;                     /* Ukuran tulisan riwayat */
+    color: var(--text-dark);             /* Warna tulisan */
+}
+
+
+/* Mengatur informasi tambahan riwayat */
+
+.study-history-item span {
+    font-size: 12px;                     /* Ukuran informasi tambahan */
+    color: var(--text-muted);            /* Warna informasi tambahan */
+}
+
+
+/* Mengatur pesan ketika belum ada riwayat */
+
+.empty-history {
+    color: var(--text-muted);            /* Warna pesan */
+    font-size: 13px;                     /* Ukuran tulisan pesan */
+    text-align: center;                  /* Membuat pesan berada di tengah */
+    padding: 15px 0;                    /* Jarak pesan dari atas dan bawah */
+}
+
+
+/* ============================================================
+   42. RESPONSIVE TABLET
+
+   Bagian ini mengatur tampilan ketika website dibuka
+   pada layar tablet dengan lebar maksimal 1000 piksel.
+   ============================================================ */
+
+@media (max-width: 1000px) {
+
+    /* Memperkecil lebar sidebar pada tablet */
+    :root {
+        --sidebar-width: 220px;
+    }
+
+    /* Mengurangi jarak di dalam sidebar */
+    .sidebar {
+        padding: 25px 15px 18px;
+    }
+
+    /* Mengurangi jarak konten dari tepi halaman */
+    .main-content {
+        padding: 25px 22px 40px;
+    }
+
+    /* Mengurangi jarak antar kartu statistik */
+    .stats-section {
+        gap: 15px;
+    }
+
+    /* Mengurangi jarak isi kartu statistik */
+    .stats-card {
+        padding: 20px;
+    }
+
+    /* Mengubah susunan My Tasks menjadi satu kolom */
+    .tasks-section {
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "header"
+            "tools"
+            "form"
+            "list";
+    }
+
+}
+
+
+/* ============================================================
+   43. RESPONSIVE HP
+
+   Bagian ini menyesuaikan tampilan website untuk HP.
+   Sidebar dipindahkan ke bagian atas halaman.
+   ============================================================ */
+
+@media (max-width: 650px) {
+
+    /* Menyusun sidebar dan konten secara vertikal */
+    .app-layout {
+        flex-direction: column;
+    }
+
+    /* Mengatur tampilan sidebar pada HP */
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        height: auto;
+
+        padding: 18px 15px;
+
+        border-right: none;
+        border-bottom: 1px solid #eee9fa;
+    }
+
+    /* Mengatur jarak logo pada HP */
+    .sidebar-logo {
+        padding: 0 5px 15px;
+    }
+
+    /* Mengatur ukuran tulisan logo pada HP */
+    .sidebar-logo h2 {
+        font-size: 21px;
+    }
+
+    /* Mengatur jarak kelompok menu pada HP */
+    .sidebar-menu {
+        margin-top: 18px;
+    }
+
+    /* Mengatur judul kelompok menu pada HP */
+    .sidebar-heading {
+        padding: 0 5px;
+        margin-bottom: 8px;
+    }
+
+    /* Menyusun menu navigasi menjadi dua kolom */
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    /* Mengatur ukuran link menu pada HP */
+    .sidebar-link {
+        padding: 10px 8px;
+        gap: 8px;
+        font-size: 11px;
+    }
+
+    /* Mengatur ukuran ikon menu pada HP */
+    .menu-icon {
+        width: 18px;
+        min-width: 18px;
+        font-size: 16px;
+    }
+
+    /* Mengatur jarak menu pengaturan pada HP */
+    .settings-menu {
+        margin-top: 18px;
+    }
+
+    /* Mengatur bagian profil di bawah sidebar */
+    .sidebar-bottom {
+        margin-top: 18px;
+        padding-top: 12px;
+    }
+
+    /* Mengatur jarak bagian profil */
+    .sidebar-profile {
+        padding-bottom: 10px;
+    }
+
+    /* Mengatur tombol Logout pada HP */
+    #logout-btn {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    /* Mengatur konten utama pada HP */
+    .main-content {
+        width: 100%;
+        padding: 22px 15px 35px;
+    }
+
+    /* Mengatur jarak header Dashboard */
+    .content-header {
+        margin-bottom: 20px;
+    }
+
+    /* Memperkecil judul Dashboard */
+    .content-header h1 {
+        font-size: 23px;
+    }
+
+    /* Mengatur jarak Dashboard container */
+    .dashboard-container {
+        padding: 0;
+    }
+
+    /* Mengatur kartu sambutan pada HP */
+    .welcome-section {
+        padding: 25px 20px;
+        margin-bottom: 22px;
+    }
+
+    /* Memperkecil judul sambutan */
+    .welcome-section h1 {
+        font-size: 22px;
+    }
+
+    /* Memperkecil deskripsi sambutan */
+    .welcome-section p {
+        font-size: 12px;
+    }
+
+    /* Menyusun kartu statistik menjadi satu kolom */
+    .stats-section {
+        grid-template-columns: 1fr;
+        gap: 13px;
+        margin-bottom: 28px;
+    }
+
+    /* Mengatur jarak isi kartu statistik */
+    .stats-card {
+        padding: 20px;
+    }
+
+    /* Memperkecil angka statistik */
+    .stats-card p {
+        font-size: 28px;
+    }
+
+    /* Memperkecil judul My Tasks */
+    .section-header h2 {
+        font-size: 22px;
+    }
+
+    /* Memperkecil deskripsi My Tasks */
+    .section-header p {
+        font-size: 12px;
+    }
+
+    /* Menyusun pencarian dan filter menjadi satu kolom */
+    .task-tools {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    /* Mengatur jarak isi form tambah tugas */
+    .task-form-container {
+        padding: 20px;
+    }
+
+    /* Mengatur jarak isi kartu daftar tugas */
+    .task-list-container {
+        padding: 20px;
+    }
+
+    /* Menyusun isi kartu tugas secara vertikal */
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    /* Memperkecil tombol edit dan delete */
+    .edit-btn,
+    .delete-btn {
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+
+    /* Mengatur jarak bagian Pomodoro */
+    .pomodoro-section {
+        margin-top: 35px;
+    }
+
+    /* Memperkecil judul Pomodoro */
+    .pomodoro-header h2 {
+        font-size: 22px;
+    }
+
+    /* Mengurangi jarak isi kartu timer */
+    .pomodoro-card {
+        padding: 25px 15px;
+    }
+
+    /* Memperkecil angka timer */
+    #timer-display {
+        font-size: 46px;
+    }
+
+    /* Mengatur tombol timer pada HP */
+    .pomodoro-card button {
+        padding: 10px 13px;
+        font-size: 11px;
+        margin: 4px;
+    }
+
+    /* Mengatur jarak Study History */
+    .study-history-section {
+        margin-top: 35px;
+    }
+
+    /* Memperkecil judul Study History */
+    .study-history-header h2 {
+        font-size: 22px;
+    }
+
+    /* Menyusun kartu ringkasan menjadi satu kolom */
+    .study-summary {
+        grid-template-columns: 1fr;
+        gap: 13px;
+    }
+
+    /* Mengatur jarak isi kartu ringkasan */
+    .study-summary-card {
+        padding: 20px;
+    }
+
+    /* Memperkecil angka ringkasan */
+    .study-summary-card h3 {
+        font-size: 26px;
+    }
+
+    /* Mengatur jarak isi kartu grafik */
+    .study-chart-section {
+        padding: 20px 12px;
+    }
+
+    /* Memperkecil judul grafik */
+    .study-chart-header h3 {
+        font-size: 18px;
+    }
+
+    /* Mengatur area grafik pada HP */
+    #study-chart-bars {
+        gap: 5px;
+        min-height: 220px;
+        padding: 10px 2px;
+    }
+
+    /* Mengatur tinggi kolom grafik pada HP */
+    .study-chart-column {
+        height: 200px;
+        gap: 8px;
+    }
+
+    /* Mengatur lebar batang grafik pada HP */
+    .study-chart-bar {
+        width: 70%;
+    }
+
+    /* Memperkecil angka grafik */
+    .study-chart-value {
+        font-size: 9px;
+    }
+
+    /* Memperkecil label hari grafik */
+    .study-chart-label {
+        font-size: 9px;
+        padding: 5px 5px;
+    }
+
+    /* Mengatur jarak kartu riwayat pada HP */
+    .study-history-container {
+        padding: 18px 14px;
+    }
+
+    /* Menyusun informasi riwayat secara vertikal */
+    .study-history-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+}
+
+
+/* ============================================================
+   44. RESPONSIVE HP KECIL
+
+   Bagian ini memberikan penyesuaian tambahan untuk HP
+   yang memiliki lebar layar maksimal 380 piksel.
+   ============================================================ */
+
+@media (max-width: 380px) {
+
+    /* Mengurangi jarak konten dari tepi layar */
+    .main-content {
+        padding: 18px 12px 30px;
+    }
+
+    /* Memperkecil tulisan menu sidebar */
+    .sidebar-link {
+        font-size: 10px;
+        padding: 9px 6px;
+    }
+
+    /* Memperkecil judul sambutan */
+    .welcome-section h1 {
+        font-size: 19px;
+    }
+
+    /* Memperkecil angka timer */
+    #timer-display {
+        font-size: 39px;
+    }
+
+    /* Memperkecil tombol timer */
+    .pomodoro-card button {
+        padding: 9px 10px;
+        font-size: 10px;
+    }
+
+}
+
+
+/* ============================================================
+   45. ANIMASI TOMBOL
+
+   Memberikan efek ketika tombol diarahkan atau ditekan.
+   ============================================================ */
+
+button {
+    transition:
+        background-color 0.3s ease,     /* Menghaluskan perubahan warna latar */
+        color 0.3s ease,                /* Menghaluskan perubahan warna tulisan */
+        transform 0.3s ease;            /* Menghaluskan gerakan tombol */
+}
+
+
+/* Efek ketika tombol ditekan */
+
+button:active {
+    transform: scale(0.97);             /* Membuat tombol sedikit mengecil */
+}
+
+
+/* ============================================================
+   AKHIR FILE DASHBOARD-STYLE.CSS
+   ============================================================ */

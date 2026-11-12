@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Study Schedule | Focus Flow</title>
+
+    <!-- CSS untuk halaman Study Schedule -->
+    <link rel="stylesheet" href="study-schedule-style.css">
+
+    <!-- Icon dari Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ==================================================
+         SIDEBAR NAVIGATION
+         Berisi menu navigasi utama Focus Flow
+    ================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+
+            <div>
+                <h2>Focus Flow</h2>
+                <p>Study Productivity</p>
+            </div>
+        </div>
+
+        <div class="sidebar-menu">
+
+            <p class="menu-title">MENU</p>
+
+            <a href="dashboard.html" class="menu-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="dashboard.html#myTasks" class="menu-item">
+                <i class="fa-solid fa-list-check"></i>
+                <span>My Tasks</span>
+            </a>
+
+            <a href="study-schedule.html" class="menu-item active">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Study Schedule</span>
+            </a>
+
+            <a href="dashboard.html#pomodoro" class="menu-item">
+                <i class="fa-solid fa-clock"></i>
+                <span>Pomodoro Timer</span>
+            </a>
+
+            <a href="dashboard.html#studyHistory" class="menu-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Study History</span>
+            </a>
+
+            <p class="menu-title">PREFERENCES</p>
+
+            <a href="settings.html" class="menu-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </a>
+
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="footer-icon">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+
+            <div>
+                <h4>Keep Learning!</h4>
+                <p>Small steps, big progress.</p>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- ==================================================
+         MAIN CONTENT
+         Isi utama halaman Study Schedule
+    ================================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div class="header-left">
+
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <div>
+                    <h1>Study Schedule</h1>
+                    <p>Atur waktu belajar dan rencanakan kegiatanmu.</p>
+                </div>
+
+            </div>
+
+            <div class="header-right">
+
+                <div class="date-display">
+                    <i class="fa-regular fa-calendar"></i>
+                    <span id="todayDate"></span>
+                </div>
+
+                <div class="profile-display">
+                    <div class="profile-avatar">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+
+                    <div>
+                        <h4 id="userName">Student</h4>
+                        <p id="userEmail">Loading...</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome-section">
+
+            <div class="welcome-text">
+                <span class="welcome-label">
+                    <i class="fa-solid fa-sparkles"></i>
+                    YOUR LEARNING PLAN
+                </span>
+
+                <h2>Plan Your Study Time</h2>
+
+                <p>
+                    Buat jadwal belajar yang teratur agar kegiatan belajar
+                    menjadi lebih terarah dan produktif.
+                </p>
+            </div>
+
+            <div class="welcome-illustration">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="statistics-section">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+
+                <div class="stat-info">
+                    <p>Total Jadwal</p>
+                    <h3 id="totalSchedules">0</h3>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon pink">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <div class="stat-info">
+                    <p>Jadwal Hari Ini</p>
+                    <h3 id="todaySchedules">0</h3>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                </div>
+
+                <div class="stat-info">
+                    <p>Total Durasi</p>
+                    <h3 id="totalDuration">0 Jam</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTENT GRID -->
+
+        <section class="schedule-layout">
+
+
+            <!-- CALENDAR -->
+
+            <div class="calendar-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>Calendar</h2>
+                        <p>Lihat jadwal belajar berdasarkan tanggal.</p>
+                    </div>
+
+                </div>
+
+                <div class="calendar-navigation">
+
+                    <button id="prevMonth" class="calendar-nav-btn">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <h3 id="calendarMonth"></h3>
+
+                    <button id="nextMonth" class="calendar-nav-btn">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+
+                </div>
+
+                <div class="calendar-weekdays">
+
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+
+                </div>
+
+                <div class="calendar-days" id="calendarDays">
+                    <!-- Kalender dibuat oleh JavaScript -->
+                </div>
+
+                <div class="calendar-legend">
+
+                    <div>
+                        <span class="legend-dot"></span>
+                        <p>Hari ini</p>
+                    </div>
+
+                    <div>
+                        <span class="legend-dot schedule-dot"></span>
+                        <p>Ada jadwal</p>
+                    </div>
+
+                    <div>
+                        <span class="legend-dot selected-dot"></span>
+                        <p>Tanggal dipilih</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SCHEDULE LIST -->
+
+            <div class="schedule-list-card">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2 id="selectedDateTitle">Today's Schedule</h2>
+                        <p id="selectedDateDescription">
+                            Jadwal belajar yang dipilih.
+                        </p>
+                    </div>
+
+                    <button class="add-schedule-btn" id="addScheduleBtn">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Schedule
+                    </button>
+
+                </div>
+
+                <div class="schedule-list" id="scheduleList">
+
+                    <!-- Daftar jadwal dibuat oleh JavaScript -->
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ADD / EDIT SCHEDULE MODAL -->
+
+        <div class="modal-overlay" id="scheduleModal">
+
+            <div class="modal-card">
+
+                <div class="modal-header">
+
+                    <div>
+                        <h2 id="modalTitle">Add Study Schedule</h2>
+                        <p>Lengkapi informasi jadwal belajar.</p>
+                    </div>
+
+                    <button class="close-modal-btn" id="closeModal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <form id="scheduleForm">
+
+                    <!-- Nama mata pelajaran -->
+
+                    <div class="form-group">
+
+                        <label for="subjectInput">
+                            Subject
+                        </label>
+
+                        <input type="text"
+                            id="subjectInput"
+                            placeholder="Contoh: Matematika"
+                            required>
+
+                    </div>
+
+
+                    <!-- Tanggal belajar -->
+
+                    <div class="form-group">
+
+                        <label for="dateInput">
+                            Date
+                        </label>
+
+                        <input type="date"
+                            id="dateInput"
+                            required>
+
+                    </div>
+
+
+                    <!-- Waktu mulai -->
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="startTimeInput">
+                                Start Time
+                            </label>
+
+                            <input type="time"
+                                id="startTimeInput"
+                                required>
+
+                        </div>
+
+
+                        <!-- Waktu selesai -->
+
+                        <div class="form-group">
+
+                            <label for="endTimeInput">
+                                End Time
+                            </label>
+
+                            <input type="time"
+                                id="endTimeInput"
+                                required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Catatan -->
+
+                    <div class="form-group">
+
+                        <label for="noteInput">
+                            Notes
+                        </label>
+
+                        <textarea id="noteInput"
+                            rows="3"
+                            placeholder="Tambahkan catatan belajar..."></textarea>
+
+                    </div>
+
+
+                    <!-- Tombol -->
+
+                    <div class="modal-actions">
+
+                        <button type="button"
+                            class="cancel-btn"
+                            id="cancelModal">
+                            Cancel
+                        </button>
+
+                        <button type="submit"
+                            class="save-btn"
+                            id="saveScheduleBtn">
+                            <i class="fa-solid fa-floppy-disk"></i>
+                            Save Schedule
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOADING -->
+
+        <div class="loading-overlay" id="loadingOverlay">
+
+            <div class="loading-content">
+
+                <div class="loading-spinner"></div>
+
+                <p>Memuat jadwal belajar...</p>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+<!-- Menghubungkan tema global Focus Flow -->
+<script type="module" src="theme.js"></script>
+
+<!-- Menghubungkan JavaScript Study Schedule -->
+<script type="module" src="study-schedule.js"></script>
+
+</body>
+
+</html>
